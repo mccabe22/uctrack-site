@@ -36,3 +36,10 @@ a:focus-visible,button:focus-visible{outline:3px solid #3d8cff;outline-offset:3p
 #uc-meet-grid #uc-last-link{border-left:1px solid #dbe2ec}
 #uc-meet-grid #uc-last-link:hover,#uc-meet-grid #uc-next-link:hover{background:#e7edf6;color:inherit}
 @media(max-width:720px){#uc-meet-grid #uc-last-link{border-left:0;border-top:1px solid #dbe2ec}}
+
+/* Team Hub button (right end of the header) */
+.header-actions{display:flex;align-items:center;gap:.35rem;flex:none;margin-left:14px}
+.site-header .team-hub-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;color:#fff;font-size:.85rem;font-weight:800;white-space:nowrap}
+.site-header .team-hub-link span{padding:.25rem .8rem;border-radius:.35rem;background:#1759bd}
+.site-header .team-hub-link:hover span{background:#0b43a9}
+@media(max-width:480px){.header-actions{gap:.15rem;margin-left:6px}.site-header .team-hub-link span{padding-inline:.5rem}.site-header .site-branding{gap:.35rem;min-width:0}.site-header .custom-logo{width:clamp(9rem,44vw,11.5rem)}}
