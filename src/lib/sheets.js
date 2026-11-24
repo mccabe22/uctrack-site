@@ -93,7 +93,7 @@ export async function discoverTabs(sheet) {
       }
       if (tabs.size) break;
     }
-    const ignored = ['schedule', 'names', 'name', 'roster', 'template', 'instructions', 'settings', 'data'];
+    const ignored = ['schedule', 'names', 'name', 'roster', 'template', 'instructions', 'settings', 'data', 'records review'];
     for (const [gid, name] of [...tabs]) {
       if (gid === 0 || ignored.includes(name.toLowerCase().trim())) tabs.delete(gid);
     }

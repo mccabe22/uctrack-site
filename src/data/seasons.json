@@ -3,7 +3,26 @@
   "xc": {
     "year": 2026,
     "sheet": "1nwcdNnP79GTJ2oOyuho_3OtGSTL8IjFPLcByorqJgp4",
-    "tabs": [2104120904, 389311743, 159600197, 500692660, 1409250233, 227929266, 2091153479, 105925766, 1904233765, 250114997, 1201611449, 607674929, 658644279, 43069627, 861479369, 1110225813, 114687718]
+    "tabs": [
+      2104120904,
+      389311743,
+      159600197,
+      500692660,
+      1409250233,
+      227929266,
+      2091153479,
+      105925766,
+      1904233765,
+      250114997,
+      1201611449,
+      607674929,
+      658644279,
+      43069627,
+      861479369,
+      1110225813,
+      114687718
+    ],
+    "kind": "xc"
   },
   "winter": {
     "label": "2026-27",
@@ -13,6 +32,139 @@
     "scheduleGid": 436741749,
     "scheduleCol": 1,
     "discover": true,
-    "tabs": [593889260, 887908942, 224606473, 1361793487, 2104307204, 1796160872, 2090954007, 1756542736, 1127445738, 1671579173, 1796683966, 518401301, 390990766, 883650556, 872668799, 1252542145, 1643018778, 204470474, 305588079, 22898279, 379523889, 357977791]
+    "tabs": [
+      593889260,
+      887908942,
+      224606473,
+      1361793487,
+      2104307204,
+      1796160872,
+      2090954007,
+      1756542736,
+      1127445738,
+      1671579173,
+      1796683966,
+      518401301,
+      390990766,
+      883650556,
+      872668799,
+      1252542145,
+      1643018778,
+      204470474,
+      305588079,
+      22898279,
+      379523889,
+      357977791
+    ],
+    "kind": "track"
+  },
+  "spring": {
+    "kind": "track",
+    "label": "2026",
+    "year": 2026,
+    "start": 2026,
+    "end": 2026,
+    "sheet": "19VQLiscRPSboZ2sEPL_1GreRHrtVcDgD9rZzG5Fao4U",
+    "scheduleGid": 0,
+    "scheduleCol": 0,
+    "current": false,
+    "useSaved": true
+  },
+  "archives": {
+    "xc": {
+      "2025": "1pDpl3COCZf33lYxc5PHO_PF75qIFCr-oJQGUQ45OorI",
+      "2024": "1K94YqOIAsWw9sA1V0e6k-FaqgR5ZvnGZAACIrhwbE8k",
+      "2023": "1O6NV0LgO2NRu6jSsNDBwtZIxBuypSbbm63K0uMt15Xo",
+      "2022": "17Spod1xx2H6PHTmwy8FxDJsIppkoa-SsiQsJzRW0RYU",
+      "2021": "1kNgMzDFgVQU9nQEizR5wDf6sOWUww8dqnYuxRecbqaM",
+      "2020": "1kySBLktOrjpUUmbuDGcBhLWL1eJf32h4N1uLHBrC7Jw",
+      "2019": "15zmCny7hePSlIWwi2FHAPAAIMG8d6IsrY-SeriySwls",
+      "2018": "1KhRU7ZKp5QGKCiOElGZs9SGyo2mjh2B7cYTh48H80ak",
+      "2017": "11e7JoyALDO5fAaDv0qWg12Yi2-3ES695gsVbe3iXOhM"
+    },
+    "spring": {
+      "2025": [
+        "1fX-t_FrI997ZO8ZUxiB1K0uDIzGkLizCoEc71S--Rfk",
+        0,
+        0
+      ],
+      "2024": [
+        "1jYJ3DwSEMcOapRSFC67xoxhD20vWx7gwKHKRZc4TbSA",
+        0,
+        0
+      ],
+      "2023": [
+        "10q8BrdftwoD4Yt-_MGWnim9z3bnQN-JLYHp-lQBOR6U",
+        0,
+        0
+      ],
+      "2022": [
+        "12jyx6Osn6nHTS6L5LBlUbwowbfm8_wJ_rRlUrH_5ngg",
+        0,
+        0
+      ],
+      "2021": [
+        "1_KT8SxOC_ulyktexZS_s7gDJsRBv3YPL93U54hEoz4A",
+        1392187694,
+        1
+      ],
+      "2019": [
+        "1WYQwIu0EqrsOSs_8uXqMoyAJrJjgs8nDV8gUxaUQGAA",
+        0,
+        0
+      ],
+      "2018": [
+        "1tSWG3ew9SbU534Qyn-eyNSUUSS7krgKI1Q2AAmG7PBo",
+        0,
+        0
+      ]
+    },
+    "winter": {
+      "2025-26": [
+        "1tYUFuKTiIgE_f4jQ3Nw6u0wrqQ3cd5n8lFH07X2FeZA",
+        436741749,
+        1
+      ],
+      "2024-25": [
+        "1Ob2cgmkzCJMSUmpI9EaFLA-WCA96Q_17tk6-zMX0yMQ",
+        436741749,
+        1
+      ],
+      "2023-24": [
+        "1_-oGi5MUA5j3tEeIeA9x5USqWPDe2w7nyPFvz80SWqA",
+        12685327,
+        1
+      ],
+      "2022-23": [
+        "191SgVr1h8gDMWJ190lNUFcjTQ9gu_Htstb11hxBzEpA",
+        12685327,
+        1
+      ],
+      "2021-22": [
+        "1FzkHD3AWBJTB2_j-qWlJQuonjBaynI0LQyuj2k6LYK8",
+        1392187694,
+        1
+      ],
+      "2020-21": [
+        "1MDopTP-4jBrdTSOUNpH3DuD5sESSAoeDviG_n9n53fY",
+        1392187694,
+        1
+      ],
+      "2019-20": [
+        "1ViTxG_Di9JEZ2uNyB9Nq-GJbSeZUNgE-TyDGYCd0Q5Y",
+        1392187694,
+        1
+      ],
+      "2018-19": [
+        "1dN0jA7KumCMbSqGK38pm508NhWcNXyz4TqlrV-lpiOc",
+        1392187694,
+        1
+      ],
+      "2017-18": [
+        "1K8-BB13DF67HKt2nbFa06h6Zx52GbSkv9Y9-RCoVoJo",
+        0,
+        0
+      ]
+    }
   }
 }

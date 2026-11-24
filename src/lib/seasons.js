@@ -293,3 +293,198 @@ export async function renderTrackSeason(cfg) {
   }
   return h + '</div>';
 }
+
+/* ------------------------------------------------------------------ */
+/* Tab-driven seasons: every visible results tab becomes a meet.        */
+/* ------------------------------------------------------------------ */
+
+const ALL_MONTHS = 'Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?|July?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?';
+
+/** Track parser that also keeps event blocks whose name row is missing. */
+function trackParseSideLoose(rows, col) {
+  const events = []; let current = -1;
+  for (let i = 0; i < rows.length; i++) {
+    const r = rows[i];
+    const c0 = at(r, col), c1 = at(r, col + 1), c2 = at(r, col + 2), c3 = at(r, col + 3);
+    const next = rows[i + 1];
+    const nextName = next ? at(next, col + 1).toLowerCase() : '';
+    const nextResult = next ? at(next, col + 2).toLowerCase() : '';
+    if (c0 !== '' && c1 === '' && nextName === 'name' && nextResult.includes('result') && !/^\d+$/.test(c0)) {
+      events.push({ name: c0, meta: c3 !== '' ? c3 : c2, athletes: [], teamResult: '', teamNote: '' });
+      current = events.length - 1; continue;
+    }
+    if (c1.toLowerCase() === 'name' && c2.toLowerCase().includes('result')) {
+      // A Name/Results header with no event name above it starts an unnamed block.
+      const prev = rows[i - 1];
+      const prevIsHeader = prev && at(prev, col) !== '' && at(prev, col + 1) === '' && current >= 0 && events[current].name === at(prev, col);
+      if (!prevIsHeader) {
+        events.push({ name: 'Results', meta: '', athletes: [], teamResult: '', teamNote: '' });
+        current = events.length - 1;
+      }
+      continue;
+    }
+    if (current < 0 || /^-{3,}/.test(c0)) continue;
+    if (c1 !== '') {
+      if (['BOYS', 'GIRLS'].includes(c1.toUpperCase())) continue;
+      events[current].athletes.push({ place: c0, name: c1, result: cleanResult(c2), detail: cleanNote(c3) });
+      continue;
+    }
+    if (isRelay(events[current].name) && (c2 !== '' || c3 !== '')) {
+      if (c2 !== '') events[current].teamResult = cleanResult(c2);
+      if (c3 !== '') events[current].teamNote = cleanNote(c3);
+    }
+  }
+  return events.filter((e) => e.athletes.length || e.teamResult !== '' || e.teamNote !== '');
+}
+
+
+/** XC parser that also accepts a race header followed directly by athlete rows (no Name/Results row). */
+function xcParseSideLoose(rows, col) {
+  const events = []; let current = -1;
+  for (let i = 0; i < rows.length; i++) {
+    const r = rows[i];
+    const c0 = at(r, col), c1 = at(r, col + 1), c2 = at(r, col + 2), c3 = at(r, col + 3);
+    const next = rows[i + 1];
+    const nextName = next ? at(next, col + 1) : '';
+    const nextResult = next ? at(next, col + 2).toLowerCase() : '';
+    const timeLike = /\b(?:a\.?m\.?|p\.?m\.?)\b/i;
+    const raceLike = /\b(miles?|5k|meters?|varsity|jv|novice|frosh|freshman|open|championship|race|heat|seeded|unseeded)\b/i;
+    const headerWithNames = nextName.toLowerCase() === 'name' && nextResult.includes('result');
+    const headerNoNames = nextName !== '' && nextName.toLowerCase() !== 'name' && (timeLike.test(c2) || timeLike.test(c3) || raceLike.test(c0));
+    if (c0 !== '' && c1 === '' && !/^\d+$/.test(c0) && !/^(BOYS|GIRLS)$/i.test(c0) && (headerWithNames || headerNoNames)) {
+      let time = c2, note = c3;
+      if (time === '' && timeLike.test(note)) { time = note; note = ''; }
+      events.push({ name: c0, time, note, athletes: [] });
+      current = events.length - 1; continue;
+    }
+    if (c1.toLowerCase() === 'name' || c2.toLowerCase().includes('result')) continue;
+    if (current >= 0 && c1 !== '') events[current].athletes.push({ place: c0, name: c1, result: c2, splits: c3 });
+  }
+  return events.filter((e) => e.athletes.length);
+}
+
+function genericDateKey(v, cfg) {
+  return trackDateKey(v, { ...cfg, monthPattern: ALL_MONTHS });
+}
+
+async function tabMeet(cfg, gid, tabName) {
+  const rows = await lineRows(cfg.sheet, gid, SOURCES);
+  const isDate = (v) => genericDateKey(v, cfg) !== '';
+  let title = at(rows[0], 0); let location = at(rows[1], 0);
+  if (isDate(title)) { title = ''; location = ''; }
+  if (isDate(location)) location = '';
+  let date = '';
+  outer: for (let r = 0; r < Math.min(6, rows.length); r++) {
+    for (let i = 0; i < (rows[r] || []).length; i++) { const c = at(rows[r], i); if (isDate(c)) { date = c; break outer; } }
+  }
+  let boys, girls;
+  if (cfg.kind === 'xc') { boys = xcParseSideLoose(rows, 0); girls = xcParseSideLoose(rows, 5); }
+  else { boys = trackParseSideLoose(rows, 0); girls = trackParseSideLoose(rows, 5); }
+  let note = '';
+  const okNote = (x) => x.length > 3 && !['BOYS', 'GIRLS'].includes(x.toUpperCase()) && !isDate(x) && !includesCI(x, title || '\u0000') && !includesCI(x, location || '\u0000');
+  if (rows[2]) { for (let i = 1; i < rows[2].length; i++) { const x = at(rows[2], i); if (x && okNote(x)) { note = x; break; } } }
+  for (let r = 0; !note && r <= 3 && r < rows.length; r++) {
+    for (let i = 1; i < (rows[r] || []).length; i++) {
+      const x = at(rows[r], i);
+      if (x.length > 3 && !['BOYS', 'GIRLS'].includes(x.toUpperCase()) && !isDate(x) && !/^\d{1,2}:\d{2}\s*[AP]M$/i.test(x) && !includesCI(x, title || '\u0000') && !includesCI(x, location || '\u0000') && !/^(name|results?|notes)$/i.test(x)) { note = x; break; }
+    }
+    if (note) break;
+  }
+  // Saved copy (e.g. Spring 2026) wins when the sheet tab is incomplete.
+  const saved = cfg.saved?.[gid];
+  const unnamed = [...boys, ...girls].some((e) => e.name === 'Results');
+  if (saved && (title === '' || unnamed || (!boys.length && !girls.length))) {
+    return { gid, tabName, title: saved.title || title, location: saved.location || location, date: date || saved.date || '', dateKey: genericDateKey(date || saved.date || '', cfg), note: saved.note || note, boys: saved.boys, girls: saved.girls };
+  }
+  if (!date && !boys.length && !girls.length) return null; // helper tab, not a meet
+  return { gid, tabName, title, location, date, dateKey: genericDateKey(date, cfg), note: cfg.kind === 'xc' ? (await xcResultMeet(cfg.year, cfg.sheet, gid))?.note || '' : note, boys, girls };
+}
+
+function nameScore(a, b) {
+  const x = norm(a, true), y = norm(b, true);
+  if (!x || !y) return 0;
+  if (x === y) return 12;
+  if (x.includes(y) || y.includes(x)) return 8;
+  const p = similarPercent(x, y);
+  return p >= 80 ? 5 : p >= 65 ? 3 : 0;
+}
+
+/**
+ * Season list built from the sheet's visible tabs. cfg: { kind: 'xc'|'track', sheet, scheduleGid, scheduleCol,
+ * start, end, year, current, tabs (fallback ids), saved (gid → meet) }.
+ */
+export async function renderSeasonByTabs(cfg) {
+  cfg = { scheduleGid: 0, scheduleCol: 0, ...cfg };
+  if (cfg.kind === 'xc') { cfg.start = cfg.end = cfg.year; }
+  // Schedule rows (blank dates kept; they sort after the previous dated row).
+  const sRows = await lineRows(cfg.sheet, cfg.scheduleGid, SOURCES);
+  const c = cfg.scheduleCol; const schedule = []; let lastKey = '';
+  sRows.forEach((r, idx) => {
+    const date = at(r, c), meet = at(r, c + 1);
+    if (meet === '' || /^(meet|date)$/i.test(meet) || date.toLowerCase() === 'date' || /^note:/i.test(date)) return;
+    const dateKey = genericDateKey(date, cfg);
+    if (date !== '' && dateKey === '' && !/\bTBD\b/i.test(date)) return;
+    if (dateKey) lastKey = dateKey;
+    schedule.push({ date, dateKey, sortKey: dateKey || lastKey, meet, location: at(r, c + 2), time: at(r, c + 3), transport: at(r, c + 4), idx, used: false });
+  });
+  // Visible tabs in sheet order.
+  const discovered = await discoverTabs(cfg.sheet);
+  let tabList = discovered.size ? [...discovered] : (cfg.tabs || []).map((g) => [g, '']);
+  tabList = tabList.filter(([g]) => g !== cfg.scheduleGid && !(cfg.exclude || []).includes(g));
+  const meets = (await Promise.all(tabList.map(([g, n]) => tabMeet(cfg, g, n)))).filter(Boolean);
+  if (!meets.length && !schedule.length) return '';
+
+  const entries = [];
+  meets.forEach((m, order) => {
+    let best = null; let bestScore = 0;
+    for (const s of schedule) {
+      if (s.used) continue;
+      let score = nameScore(s.meet, m.title);
+      const gap = m.dateKey && s.dateKey ? Math.abs(Date.parse(m.dateKey) - Date.parse(s.dateKey)) / 864e5 : null;
+      if (gap === 0) score += 6;
+      else if (gap !== null && gap <= 3 && score >= 3) score += 3;
+      else if (gap !== null && gap > 3 && score < 8) continue;
+      if (score > bestScore) { bestScore = score; best = s; }
+    }
+    if (best && bestScore >= 6) best.used = true; else best = null;
+    if (!m.title && !best) {
+      // Untitled tab: use the schedule row on the same day if there is one.
+      const sameDay = schedule.find((s) => !s.used && s.dateKey && s.dateKey === m.dateKey);
+      if (sameDay) { sameDay.used = true; best = sameDay; }
+    }
+    const hasResults = m.boys.length || m.girls.length;
+    entries.push({
+      date: (best && best.date && (!/\b(19|20)\d{2}\b/.test(m.date) || best.dateKey === m.dateKey)) ? best.date : (m.date || 'Date TBA'),
+      sortKey: m.dateKey || best?.sortKey || '9999',
+      order,
+      meet: best?.meet || m.title || m.tabName || 'Meet',
+      location: best?.location || m.location,
+      time: best?.time || '', transport: best?.transport || '',
+      result: hasResults ? m : null,
+    });
+  });
+  for (const s of schedule) {
+    if (s.used) continue;
+    if (!s.dateKey && !cfg.current) continue; // undated, no results tab, past season
+    entries.push({ date: s.date || 'Date TBA', sortKey: s.sortKey || '9999', order: 1000 + s.idx, meet: s.meet, location: s.location, time: s.time, transport: s.transport, result: null });
+  }
+  entries.sort((a, b) => (a.sortKey < b.sortKey ? -1 : a.sortKey > b.sortKey ? 1 : a.order - b.order));
+
+  const xc = cfg.kind === 'xc';
+  let h = `<div class="uc-xc-native-list${xc ? '' : ' uc-spring-native-list'}">`;
+  for (const e of entries) {
+    const r = e.result;
+    h += `<article class="uc-xc-native-meet"><div class="uc-xc-native-meet-main"><div class="uc-xc-native-date">${esc(e.date)}</div><div><h5>${esc(e.meet)}</h5><div class="uc-xc-native-meta">`;
+    if (e.location) h += `<span>${esc(e.location)}</span>`;
+    if (e.time && e.time.toUpperCase() !== 'N/A') h += `<span>${esc(e.time)}</span>`;
+    if (e.transport && e.transport.toUpperCase() !== 'N/A') h += `<span>${esc(e.transport)}</span>`;
+    const idle = cfg.current ? (xc ? 'Scheduled' : 'Upcoming') : 'Season Archive';
+    h += `</div></div><span class="uc-xc-native-status${r ? ' uc-xc-native-status--results' : ''}">${r ? 'Results Posted' : idle}</span></div>`;
+    if (r) {
+      const body = xc ? xcResults({ note: r.note, boys: r.boys, girls: r.girls }) : trackResults(r);
+      h += `<details class="uc-xc-native-toggle${xc ? '' : ' uc-spring-native-toggle'}"><summary>View Meet Results</summary>${body}</details>`;
+    }
+    h += '</article>';
+  }
+  return h + '</div>';
+}

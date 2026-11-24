@@ -1,7 +1,8 @@
 // Builds the final HTML for each saved page, filling in the Google-Sheets-driven blocks.
 import seasons from '../data/seasons.json';
 import posts from '../data/posts.json';
-import { renderXcSeason, renderTrackSeason } from './seasons.js';
+import { renderSeasonByTabs } from './seasons.js';
+import springSaved from '../data/spring-2026-saved.json';
 import { RECORD_BOOKS, renderRecordTab } from './records.js';
 import { esc } from './util.js';
 
@@ -60,16 +61,15 @@ export async function renderPageHtml(page) {
   let html = page.html;
   const fill = (key, value) => { html = html.replace(`<!--LIVE:${key}-->`, () => value); };
 
-  if (html.includes('<!--LIVE:xc-2026-->')) {
-    const live = await renderXcSeason({ ...seasons.xc, current: true });
-    if (!live) warn('cross country season sheet could not be read; using saved copy');
-    fill('xc-2026', live || page.live['xc-2026']);
-  }
-  if (html.includes('<!--LIVE:winter-2026-27-->')) {
-    const live = await renderTrackSeason({ ...seasons.winter, current: true });
-    if (!live) warn('winter season sheet could not be read; using saved copy');
-    fill('winter-2026-27', live || page.live['winter-2026-27']);
-  }
+  const season = async (key, cfg, label) => {
+    if (!html.includes(`<!--LIVE:${key}-->`)) return;
+    const live = await renderSeasonByTabs(cfg);
+    if (!live) warn(`${label} sheet could not be read; using saved copy`);
+    fill(key, live || page.live[key]);
+  };
+  await season('xc-2026', { ...seasons.xc, current: true }, 'cross country season');
+  await season('winter-2026-27', { ...seasons.winter, current: true }, 'winter season');
+  await season('spring-current', { ...seasons.spring, saved: seasons.spring.useSaved ? springSaved : undefined }, 'spring season');
   if (html.includes('<!--LIVE:records-->')) {
     const slug = page.path.replace(/\//g, '');
     const first = Object.keys(RECORD_BOOKS[slug].tabs)[0];
