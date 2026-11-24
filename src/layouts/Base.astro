@@ -20,6 +20,9 @@ const {
   styles = ['main.css', 'uc-refresh.css'], headInline = [], scripts = [{ src: '/assets/main.js' }], noindex = false,
 } = Astro.props;
 const site = 'https://www.uctrack.com';
+// New version tag every build so browsers never mix old cached scripts/styles with new pages.
+const v = (globalThis.__ucBuild ??= Date.now().toString(36));
+const asset = (u) => (u && u.startsWith('/assets/') ? `${u}?v=${v}` : u);
 const url = site + path;
 const image = ogImage ? (ogImage.startsWith('http') ? ogImage : site + ogImage) : '';
 const usesArchive = path.startsWith('/scheduleresults/') || /school-records\/$|class-records\/$/.test(path);
@@ -45,7 +48,7 @@ const usesArchive = path.startsWith('/scheduleresults/') || /school-records\/$|c
 {description && <meta name="twitter:description" content={description}>}
 {image && <meta name="twitter:image" content={image}>}
 <Fragment set:html={chrome.headStyles} />
-{styles.map((s) => <link rel="stylesheet" href={`/assets/${s}`}>)}
+{styles.map((s) => <link rel="stylesheet" href={asset(`/assets/${s}`)}>)}
 {headInline.map((h) => <Fragment set:html={h} />)}
 <Fragment set:html={chrome.icons} />
 </head>
@@ -54,7 +57,7 @@ const usesArchive = path.startsWith('/scheduleresults/') || /school-records\/$|c
 <Fragment set:html={chrome.header} />
 <slot />
 <Fragment set:html={chrome.footer} />
-{usesArchive && <script is:inline src="/assets/static-archive.js"></script>}
-{scripts.map((s) => s.src ? <script is:inline src={s.src}></script> : <script is:inline set:html={s.inline}></script>)}
+{usesArchive && <script is:inline src={asset('/assets/static-archive.js')}></script>}
+{scripts.map((s) => s.src ? <script is:inline src={asset(s.src)}></script> : <script is:inline set:html={s.inline}></script>)}
 </body>
 </html>
