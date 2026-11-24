@@ -14,7 +14,7 @@ export const pageByPath = (path) => pages.find((p) => p.path === path);
 const warn = (msg) => console.warn(`\n[uctrack] WARNING: ${msg}\n`);
 
 /** Tabs whose sheet can't be reached from the build (kept as a saved copy). */
-const SNAPSHOT_TABS = new Set(['spring-track-field-boys-school-records/class-lists']);
+const SNAPSHOT_TABS = new Set();
 
 const recordCache = new Map();
 export async function recordTabHtml(slug, tab) {
@@ -38,7 +38,6 @@ export function allRecordTabs() {
   for (const [slug, book] of Object.entries(RECORD_BOOKS)) {
     for (const tab of Object.keys(book.tabs)) out.push({ slug, tab });
   }
-  out.push({ slug: 'spring-track-field-boys-school-records', tab: 'class-lists' });
   return out;
 }
 

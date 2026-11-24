@@ -41,6 +41,7 @@ export const RECORD_BOOKS = {
     tabs: {
       'school-records': { label: 'School Records', gid: '0', mode: 'matrix' },
       'top-10': { label: 'Top 10', gid: '1463460844', mode: 'top10' },
+      'class-lists': { label: 'Top 10 by Class', gid: '1494004116', mode: 'classlist' },
       'relay-history': { label: 'Relay History', gid: '1900000002', mode: 'relay' },
     },
   },
@@ -251,6 +252,28 @@ function renderTeamAvg(rows) {
   return h + '</div>';
 }
 
+// Spring Boys "Top 10 by Class" (ported from the theme's spring-boys-class-lists-hotfix.php).
+function renderClassList(rows) {
+  let h = '<div class="ucrl-leaderboards">'; let open = false; let event = ''; let klass = '';
+  for (const row of rows) {
+    const [first, rank, date, athlete, perf, meet, loc] = [0, 1, 2, 3, 4, 5, 6].map((c) => trim(at(row, c)));
+    if (![first, rank, date, athlete, perf, meet, loc].some((v) => v !== '')) continue;
+    if (![rank, date, athlete, perf, meet, loc].some((v) => v !== '')) {
+      if (/TOP 10 CLASS LISTS|VERIFIED CLASS RECORDS/i.test(first)) continue;
+      if (open) h += '</tbody></table></div>';
+      event = first; klass = '';
+      h += `<div class="ucrl-list-section ucrl-filter-item" data-search="${esc(event.toLowerCase())}"><h3>${esc(event)}</h3><table class="ucrl-list-table"><thead><tr><th>Rank</th><th>Date</th><th>Athlete</th><th>Performance</th><th>Meet</th><th>Location</th></tr></thead><tbody>`;
+      open = true; continue;
+    }
+    if (!open || !/^\d+$/.test(rank)) continue;
+    if (['Senior', 'Junior', 'Sophomore', 'Freshman'].includes(first)) { klass = first; h += `<tr class="ucrl-class-divider"><td colspan="6">${esc(klass)}</td></tr>`; }
+    const search = `${event} ${klass} ${rank} ${date} ${athlete} ${perf} ${meet} ${loc}`.trim().toLowerCase();
+    h += `<tr class="ucrl-data-row" data-search="${esc(search)}"><td data-label="Rank"><span class="ucrl-rank">${esc(rank)}</span></td><td data-label="Date">${esc(date)}</td><td data-label="Athlete">${esc(athlete)}</td><td data-label="Performance" class="ucrl-performance">${esc(perf)}</td><td data-label="Meet">${esc(meet)}</td><td data-label="Location">${esc(loc)}</td></tr>`;
+  }
+  if (open) h += '</tbody></table></div>';
+  return h + '</div>';
+}
+
 function renderGeneric(rows) {
   const max = Math.max(0, ...rows.map((r) => r.length));
   let h = '<div class="ucrl-generic-wrap"><table class="ucrl-list-table"><tbody>';
@@ -276,6 +299,7 @@ export async function renderRecordTab(slug, tabKey) {
     case 'matrix': return renderMatrix(rows);
     case 'top10': case 'top10class': case 'relay': return renderTop10(rows, tab.mode);
     case 'teamavg': return renderTeamAvg(rows);
+    case 'classlist': return renderClassList(rows);
     default: return renderGeneric(rows);
   }
 }
