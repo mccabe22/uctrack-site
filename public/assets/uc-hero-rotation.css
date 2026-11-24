@@ -1,0 +1,1 @@
+.uc-hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden}.uc-hero-slides .hero__media{opacity:0;transition:opacity 1s ease}.uc-hero-slides .hero__media.uc-slide-active{opacity:1}@media(prefers-reduced-motion:reduce){.uc-hero-slides .hero__media{transition:none}}

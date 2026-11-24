@@ -1,0 +1,33 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/team", "destination": "/", "permanent": true },
+    { "source": "/team/:path*", "destination": "/", "permanent": true },
+    { "source": "/team-join", "destination": "/", "permanent": true },
+    { "source": "/team-profile", "destination": "/", "permanent": true },
+    { "source": "/team-training", "destination": "/", "permanent": true },
+    { "source": "/team-sizes", "destination": "/", "permanent": true },
+    { "source": "/alumni-hub", "destination": "/alumni/", "permanent": true },
+    { "source": "/athletes", "destination": "/alumni/", "permanent": true },
+    { "source": "/statistics/school-records", "destination": "/school-records/", "permanent": true },
+    { "source": "/statistics/scheduleresults", "destination": "/scheduleresults/", "permanent": true },
+    { "source": "/statistics/records/cross-country-class-records", "destination": "/cross-country-class-records/", "permanent": true },
+    { "source": "/statistics/records/class-records/winter-track-class-records", "destination": "/winter-track-class-records/", "permanent": true },
+    { "source": "/schedule", "destination": "/scheduleresults/", "permanent": true },
+    { "source": "/results", "destination": "/scheduleresults/", "permanent": true },
+    { "source": "/contact", "destination": "/", "permanent": false },
+    { "source": "/feed", "destination": "/feed.xml", "permanent": true },
+    { "source": "/comments/feed", "destination": "/feed.xml", "permanent": true },
+    { "source": "/category/:cat/feed", "destination": "/feed.xml", "permanent": true },
+    { "source": "/:year(\\d{4})/:month(\\d{2})", "destination": "/category/all-posts/", "permanent": true },
+    { "source": "/:year(\\d{4})", "destination": "/category/all-posts/", "permanent": true },
+    { "source": "/wp-admin/:path*", "destination": "/", "permanent": false },
+    { "source": "/wp-login.php", "destination": "/", "permanent": false }
+  ],
+  "headers": [
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }] },
+    { "source": "/wp-content/uploads/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] },
+    { "source": "/Reports/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] }
+  ]
+}

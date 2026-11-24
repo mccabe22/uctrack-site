@@ -1,0 +1,18 @@
+{
+  "_help": "Seasons whose schedule + results are read from Google Sheets on every build. Everything older is a saved archive.",
+  "xc": {
+    "year": 2026,
+    "sheet": "1nwcdNnP79GTJ2oOyuho_3OtGSTL8IjFPLcByorqJgp4",
+    "tabs": [2104120904, 389311743, 159600197, 500692660, 1409250233, 227929266, 2091153479, 105925766, 1904233765, 250114997, 1201611449, 607674929, 658644279, 43069627, 861479369, 1110225813, 114687718]
+  },
+  "winter": {
+    "label": "2026-27",
+    "start": 2026,
+    "end": 2027,
+    "sheet": "1rMiu8Lxe1p2f07VtMHoc0dxZPrnbRzsTOob1kCQaNbY",
+    "scheduleGid": 436741749,
+    "scheduleCol": 1,
+    "discover": true,
+    "tabs": [593889260, 887908942, 224606473, 1361793487, 2104307204, 1796160872, 2090954007, 1756542736, 1127445738, 1671579173, 1796683966, 518401301, 390990766, 883650556, 872668799, 1252542145, 1643018778, 204470474, 305588079, 22898279, 379523889, 357977791]
+  }
+}

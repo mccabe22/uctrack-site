@@ -1,0 +1,60 @@
+---
+// Shared page shell: the uc-championship header, footer and styles from the original theme.
+import chrome from '../data/chrome.json';
+
+interface Script { src?: string; inline?: string }
+interface Props {
+  title: string;
+  description?: string;
+  path: string;
+  ogImage?: string;
+  ogType?: string;
+  bodyClass?: string;
+  styles?: string[];
+  headInline?: string[];
+  scripts?: Script[];
+  noindex?: boolean;
+}
+const {
+  title, description = '', path, ogImage = '', ogType = 'website', bodyClass = '',
+  styles = ['main.css'], headInline = [], scripts = [{ src: '/assets/main.js' }], noindex = false,
+} = Astro.props;
+const site = 'https://www.uctrack.com';
+const url = site + path;
+const image = ogImage ? (ogImage.startsWith('http') ? ogImage : site + ogImage) : '';
+const usesArchive = path.startsWith('/scheduleresults/') || /school-records\/$|class-records\/$/.test(path);
+---
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{title}</title>
+{noindex ? <meta name="robots" content="noindex"> : <meta name="robots" content="max-image-preview:large">}
+<link rel="canonical" href={url}>
+<link rel="alternate" type="application/rss+xml" title="Union Catholic Cross Country | Track + Field" href="/feed.xml">
+{description && <meta name="description" content={description}>}
+<meta property="og:site_name" content="Union Catholic Cross Country | Track + Field">
+<meta property="og:type" content={ogType}>
+<meta property="og:title" content={title}>
+{description && <meta property="og:description" content={description}>}
+<meta property="og:url" content={url}>
+{image && <meta property="og:image" content={image}>}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={title}>
+{description && <meta name="twitter:description" content={description}>}
+{image && <meta name="twitter:image" content={image}>}
+<Fragment set:html={chrome.headStyles} />
+{styles.map((s) => <link rel="stylesheet" href={`/assets/${s}`}>)}
+{headInline.map((h) => <Fragment set:html={h} />)}
+<Fragment set:html={chrome.icons} />
+</head>
+<body class={bodyClass}>
+<Fragment set:html={chrome.skip} />
+<Fragment set:html={chrome.header} />
+<slot />
+<Fragment set:html={chrome.footer} />
+{usesArchive && <script is:inline src="/assets/static-archive.js"></script>}
+{scripts.map((s) => s.src ? <script is:inline src={s.src}></script> : <script is:inline set:html={s.inline}></script>)}
+</body>
+</html>

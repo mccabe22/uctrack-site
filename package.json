@@ -1,0 +1,14 @@
+{
+  "name": "uctrack-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.18.2",
+    "papaparse": "^5.7.1"
+  }
+}

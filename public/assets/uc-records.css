@@ -1,0 +1,514 @@
+:root {
+  --ucrl-navy: #0d1f46;
+  --ucrl-blue: #1f5bb8;
+  --ucrl-blue-2: #2d72da;
+  --ucrl-ink: #14213d;
+  --ucrl-muted: #64748b;
+  --ucrl-line: #dfe7f2;
+  --ucrl-soft: #f5f8fc;
+  --ucrl-gold: #e5b94f;
+  --ucrl-white: #ffffff;
+}
+
+.ucrl-shell {
+  width: min(1180px, calc(100vw - 28px));
+  max-width: none;
+  margin: 20px 0 54px 50%;
+  transform: translateX(-50%);
+  color: var(--ucrl-ink);
+  font-family: inherit;
+}
+
+.ucrl-book-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 2px 12px;
+  scrollbar-width: thin;
+}
+
+.ucrl-book-link {
+  flex: 0 0 auto;
+  text-decoration: none !important;
+  color: #466078 !important;
+  background: #fff;
+  border: 1px solid var(--ucrl-line);
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  transition: transform .18s ease, border-color .18s ease, color .18s ease, background .18s ease;
+}
+
+.ucrl-book-link:hover {
+  transform: translateY(-1px);
+  border-color: #a9bdd5;
+  color: var(--ucrl-navy) !important;
+}
+
+.ucrl-book-link.is-active {
+  background: var(--ucrl-navy);
+  border-color: var(--ucrl-navy);
+  color: #fff !important;
+}
+
+.ucrl-intro {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 2px;
+  padding: 26px 28px;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 92% 10%, rgba(68,126,218,.38), transparent 34%),
+    linear-gradient(135deg, #081734 0%, var(--ucrl-navy) 58%, #173a75 100%);
+  color: #fff;
+  box-shadow: 0 18px 45px rgba(13,31,70,.17);
+}
+
+.ucrl-intro:after {
+  content: "UC";
+  position: absolute;
+  right: 26px;
+  bottom: -30px;
+  color: rgba(255,255,255,.055);
+  font-size: 132px;
+  font-weight: 900;
+  letter-spacing: -10px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.ucrl-intro > * { position: relative; z-index: 1; }
+.ucrl-eyebrow {
+  margin-bottom: 6px;
+  color: #b9d0f5;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.ucrl-intro h2 {
+  margin: 0 !important;
+  color: #fff !important;
+  font-size: clamp(28px, 4vw, 46px) !important;
+  line-height: 1.04 !important;
+  letter-spacing: -.035em;
+}
+
+.ucrl-intro p {
+  max-width: 650px;
+  margin: 8px 0 0 !important;
+  color: #d6e3f6;
+  font-size: 15px;
+}
+
+.ucrl-live-badge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 999px;
+  background: rgba(255,255,255,.09);
+  color: #edf5ff;
+  font-size: 12px;
+  font-weight: 800;
+  backdrop-filter: blur(8px);
+}
+
+.ucrl-live-badge span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #75d49b;
+  box-shadow: 0 0 0 4px rgba(117,212,155,.14);
+}
+
+.ucrl-toolbar {
+  position: sticky;
+  top: 8px;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 16px 0;
+  padding: 10px;
+  border: 1px solid var(--ucrl-line);
+  border-radius: 16px;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 10px 28px rgba(15,35,70,.08);
+  backdrop-filter: blur(10px);
+}
+
+.ucrl-tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.ucrl-tab {
+  flex: 0 0 auto;
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #51677f;
+  padding: 10px 13px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.ucrl-tab:hover { background: #eef4fb; color: var(--ucrl-navy); }
+.ucrl-tab.is-active { background: var(--ucrl-blue); color: #fff; }
+
+.ucrl-search {
+  flex: 0 0 min(310px, 34vw);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--ucrl-line);
+  border-radius: 10px;
+  background: #f9fbfe;
+  color: #7b8da1;
+}
+
+.ucrl-search:focus-within {
+  border-color: #8eb4e8;
+  box-shadow: 0 0 0 3px rgba(45,114,218,.10);
+}
+
+.ucrl-search svg { width: 18px; height: 18px; flex: 0 0 auto; }
+.ucrl-search input {
+  width: 100%;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  color: var(--ucrl-ink) !important;
+  padding: 0 !important;
+  font: inherit !important;
+  font-size: 14px !important;
+}
+
+.ucrl-status { min-height: 0; color: var(--ucrl-muted); font-size: 13px; }
+.ucrl-status.is-loading { padding: 8px 2px 12px; }
+
+.ucrl-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0 0 14px;
+}
+.ucrl-legend span {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #eef4fb;
+  color: #385b83;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ucrl-matrix { display: grid; gap: 12px; }
+.ucrl-record-card {
+  display: grid;
+  grid-template-columns: minmax(150px, 1.05fr) minmax(0, 4.8fr);
+  gap: 14px;
+  align-items: stretch;
+  border: 1px solid var(--ucrl-line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(17,39,76,.055);
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.ucrl-record-card:hover {
+  transform: translateY(-2px);
+  border-color: #c8d7e8;
+  box-shadow: 0 14px 34px rgba(17,39,76,.10);
+}
+
+.ucrl-event-name {
+  display: flex;
+  align-items: center;
+  padding: 18px;
+  background: linear-gradient(145deg, #f6f9fd, #edf3fa);
+  color: var(--ucrl-navy);
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.ucrl-record-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  padding: 10px 10px 10px 0;
+}
+
+.ucrl-record-cell {
+  min-width: 0;
+  padding: 10px 11px;
+  border-radius: 11px;
+  background: #fafcff;
+  border: 1px solid #edf2f7;
+}
+
+/* Preserve the five class columns when a record is intentionally blank.
+   The empty cell remains invisible on desktop so later class records do not
+   shift left. On narrower layouts it is removed to avoid blank vertical gaps. */
+.ucrl-record-cell--empty {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.ucrl-record-cell--school {
+  background: linear-gradient(145deg, #eef5ff, #e5effd);
+  border-color: #bfd3ee;
+  box-shadow: inset 3px 0 0 var(--ucrl-gold);
+}
+
+.ucrl-record-label {
+  margin-bottom: 4px;
+  color: #70839a;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.ucrl-record-mark {
+  color: var(--ucrl-navy);
+  font-size: 17px;
+  font-weight: 950;
+  line-height: 1.12;
+}
+
+.ucrl-record-athlete {
+  margin-top: 4px;
+  color: #334a65;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.ucrl-record-year { margin-top: 3px; color: #8191a4; font-size: 11px; font-weight: 700; }
+
+/* Relay school-record cards use the sheet's mark / athlete line(s) / year grouping. */
+.ucrl-relay-section-title {
+  margin: 8px 0 0;
+  padding: 11px 15px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0d1f46, #173e7d);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.ucrl-record-card--relay .ucrl-record-grid {
+  grid-template-columns: minmax(0, 1fr);
+  padding-right: 10px;
+}
+.ucrl-record-card--relay-tied .ucrl-record-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.ucrl-record-card--relay .ucrl-relay-record-cell {
+  width: 100%;
+  min-height: 100%;
+}
+.ucrl-record-athlete--relay {
+  font-weight: 900;
+  color: #233d5c;
+  line-height: 1.4;
+}
+.ucrl-record-year--relay {
+  margin-top: 5px;
+  color: #8797aa;
+  font-size: 11px;
+  font-weight: 700;
+}
+.ucrl-relay-team {
+  white-space: normal !important;
+  font-weight: 900 !important;
+}
+ .ucrl-relay-event {
+  color: var(--ucrl-navy) !important;
+  font-weight: 900 !important;
+}
+
+.ucrl-leaderboards { display: grid; gap: 16px; }
+.ucrl-list-section {
+  overflow: hidden;
+  border: 1px solid var(--ucrl-line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(17,39,76,.05);
+}
+
+.ucrl-list-section h3 {
+  margin: 0 !important;
+  padding: 15px 18px !important;
+  border-bottom: 1px solid var(--ucrl-line);
+  background: linear-gradient(135deg, #0d1f46, #173e7d);
+  color: #fff !important;
+  font-size: 17px !important;
+  line-height: 1.2 !important;
+}
+
+.ucrl-list-table {
+  width: 100%;
+  margin: 0 !important;
+  border-collapse: collapse !important;
+  table-layout: auto;
+  font-size: 13px;
+}
+
+.ucrl-list-table th {
+  padding: 10px 12px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--ucrl-line) !important;
+  background: #f6f9fd !important;
+  color: #65798f !important;
+  font-size: 10px !important;
+  font-weight: 900 !important;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.ucrl-list-table td {
+  padding: 11px 12px !important;
+  border: 0 !important;
+  border-bottom: 1px solid #edf2f7 !important;
+  color: #334a65;
+  vertical-align: top;
+  line-height: 1.32;
+}
+
+.ucrl-list-table tbody tr:last-child td { border-bottom: 0 !important; }
+.ucrl-list-table tbody tr:hover td { background: #fbfdff; }
+.ucrl-performance { color: var(--ucrl-navy) !important; font-weight: 900; white-space: nowrap; }
+.ucrl-rank {
+  display: inline-grid;
+  place-items: center;
+  min-width: 27px;
+  height: 27px;
+  padding: 0 6px;
+  border-radius: 8px;
+  background: #edf4fd;
+  color: var(--ucrl-blue);
+  font-weight: 950;
+}
+
+.ucrl-class-divider td {
+  padding: 9px 12px !important;
+  background: #eef4fb !important;
+  color: var(--ucrl-navy) !important;
+  font-weight: 900 !important;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.ucrl-generic-wrap { overflow-x: auto; border: 1px solid var(--ucrl-line); border-radius: 16px; background: #fff; }
+.ucrl-generic-heading td { background: var(--ucrl-navy) !important; color: #fff !important; font-weight: 900; }
+.ucrl-empty {
+  margin: 16px 0;
+  padding: 28px;
+  border: 1px dashed #cbd8e7;
+  border-radius: 14px;
+  background: #f8fbff;
+  color: #64748b;
+  text-align: center;
+  font-weight: 750;
+}
+
+.ucrl-skeleton {
+  height: 130px;
+  border: 1px solid var(--ucrl-line);
+  border-radius: 16px;
+  background: linear-gradient(90deg, #f5f7fa 25%, #edf2f7 37%, #f5f7fa 63%);
+  background-size: 400% 100%;
+  animation: ucrlShimmer 1.35s ease infinite;
+}
+@keyframes ucrlShimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+
+@media (max-width: 920px) {
+  .ucrl-record-cell--empty { display: none; }
+  .ucrl-toolbar { position: static; align-items: stretch; flex-direction: column; }
+  .ucrl-search { flex-basis: auto; width: 100%; }
+  .ucrl-record-card { grid-template-columns: 1fr; gap: 0; }
+  .ucrl-event-name { padding: 13px 15px; }
+  .ucrl-record-grid { grid-template-columns: repeat(2, minmax(0,1fr)); padding: 10px; }
+}
+
+@media (max-width: 700px) {
+  .ucrl-shell { width: min(100% - 20px, 1180px); margin-top: 12px; margin-bottom: 38px; }
+  .ucrl-intro { align-items: flex-start; flex-direction: column; padding: 22px 20px; border-radius: 16px; }
+  .ucrl-intro:after { font-size: 105px; right: 14px; }
+  .ucrl-live-badge { font-size: 11px; }
+  .ucrl-book-nav { padding-bottom: 10px; }
+  .ucrl-book-link { padding: 9px 12px; }
+  .ucrl-toolbar { border-radius: 13px; padding: 8px; }
+  .ucrl-tab { padding: 9px 11px; }
+  .ucrl-record-grid { grid-template-columns: 1fr; }
+  .ucrl-record-cell { display: grid; grid-template-columns: 88px minmax(0,1fr); column-gap: 10px; align-items: baseline; }
+  .ucrl-record-label { grid-row: 1 / span 3; margin: 1px 0 0; }
+  .ucrl-record-mark, .ucrl-record-athlete, .ucrl-record-year { grid-column: 2; }
+  .ucrl-record-athlete { margin-top: 3px; }
+
+  .ucrl-record-card--relay .ucrl-record-cell { display: block; }
+  .ucrl-record-card--relay .ucrl-record-label { margin: 0 0 4px; }
+  .ucrl-record-card--relay .ucrl-record-mark,
+  .ucrl-record-card--relay .ucrl-record-athlete,
+  .ucrl-record-card--relay .ucrl-record-year { display: block; }
+
+  .ucrl-list-table, .ucrl-list-table tbody, .ucrl-list-table tr, .ucrl-list-table td { display: block; width: 100%; }
+  .ucrl-list-table thead { display: none; }
+  .ucrl-list-table tr.ucrl-data-row { padding: 10px 12px; border-bottom: 1px solid var(--ucrl-line); }
+  .ucrl-list-table tr.ucrl-data-row:last-child { border-bottom: 0; }
+  .ucrl-list-table td {
+    display: grid !important;
+    grid-template-columns: 88px minmax(0,1fr);
+    gap: 10px;
+    padding: 5px 0 !important;
+    border: 0 !important;
+    font-size: 13px;
+  }
+  .ucrl-list-table td:before {
+    content: attr(data-label);
+    color: #8292a5;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .ucrl-class-divider { display: block !important; padding: 0 !important; }
+  .ucrl-class-divider td { display: block !important; padding: 9px 12px !important; }
+  .ucrl-class-divider td:before { display: none; }
+}
+
+/* Search filtering must override grid/table/mobile display rules. */
+.ucrl-filter-hidden,
+.ucrl-filter-hidden.ucrl-record-card,
+.ucrl-filter-hidden.ucrl-list-section,
+tr.ucrl-filter-hidden,
+tbody tr.ucrl-filter-hidden {
+  display: none !important;
+}

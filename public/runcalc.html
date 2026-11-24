@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Running Pace Calculator | Time, Distance & Pace</title>
+  <meta name="description" content="Calculate running time, distance, or pace, or perform arithmetic directly within any field.">
+  <meta name="theme-color" content="#1a4a9c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Pace Calc">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231a4a9c'/%3E%3Crect x='30' y='30' width='40' height='40' rx='9' fill='%23ffc21e'/%3E%3Ctext x='50' y='57' font-family='Arial' font-size='15' font-weight='800' fill='%2312336b' text-anchor='middle'%3E8:00%3C/text%3E%3C/svg%3E">
+  <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Running%20Pace%20Calculator%22%2C%22short_name%22%3A%22Pace%20Calc%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230a1c3d%22%2C%22theme_color%22%3A%22%231a4a9c%22%7D">
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --blue: #1a4a9c;
+      --deep-blue: #12336b;
+      --gold: #ffc21e;
+      --gold-light: #ffd451;
+      --text-soft: #9fb3d8;
+    }
+    html {
+      height: 100%;
+      overflow: hidden;
+      overscroll-behavior: none;
+      touch-action: manipulation;
+      -webkit-text-size-adjust: 100%;
+    }
+    body {
+      margin: 0;
+      position: fixed;
+      inset: 0;
+      height: 100%;
+      overflow: hidden;
+      overscroll-behavior: none;
+      color: #fff;
+      background: radial-gradient(120% 120% at 50% 0%, #25579f 0%, #122f61 55%, #0a1c3d 100%);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    button { font-family: inherit; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      height: 100vh;
+      height: 100dvh;
+      min-height: 0;
+      padding: 32px 20px;
+      overflow: hidden;
+    }
+    .eyebrow {
+      margin-bottom: 3px;
+      color: #f4c22e;
+      font: 600 12px/1 system-ui, sans-serif;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      color: #f2f2f4;
+      font-size: 26px;
+      line-height: 1.1;
+      letter-spacing: -.01em;
+      text-align: center;
+    }
+    .calculator {
+      width: 340px;
+      max-width: 92vw;
+      padding: 20px 16px 22px;
+      background: var(--blue);
+      border-radius: 26px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.14);
+    }
+    .fields { display: flex; flex-direction: column; gap: 15px; margin-bottom: 4px; }
+    .field-row { display: flex; align-items: center; gap: 14px; min-height: 44px; }
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: 1;
+      min-width: 0;
+      cursor: pointer;
+      outline: none;
+      touch-action: manipulation;
+    }
+    .field:focus-visible .pill { text-decoration: underline; text-underline-offset: 3px; }
+    .pill {
+      width: 94px;
+      flex: 0 0 94px;
+      padding: 10px 0;
+      color: #2a2a2a;
+      background: #fff;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1;
+      box-shadow: 0 3px 6px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.9), inset 0 -2px 3px rgba(0,0,0,.08);
+    }
+    .field.focused .pill { color: #d81f1f; }
+    .field.solved .pill { color: #c88a00; }
+    .value {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      color: #fff;
+      font-size: 25px;
+      font-weight: 600;
+      line-height: 1;
+      text-align: right;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .field.solved .value { color: var(--gold-light); }
+    .unit {
+      width: 52px;
+      padding: 0;
+      color: var(--gold-light);
+      background: none;
+      border: 0;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: right;
+    }
+    .unit-spacer { width: 52px; }
+    .message {
+      display: none;
+      margin: 4px 2px 8px;
+      padding: 7px 10px;
+      color: #ffe8a1;
+      background: rgba(8, 28, 66, .36);
+      border-radius: 9px;
+      font: 600 12px/1.35 system-ui, sans-serif;
+      text-align: center;
+    }
+    .message.visible { display: block; }
+    .keypad { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 6px; }
+    .key {
+      height: 54px;
+      padding: 0;
+      border: 0;
+      border-radius: 13px;
+      cursor: pointer;
+      font-size: 29px;
+      font-weight: 700;
+      line-height: 1;
+      box-shadow: 0 6px 8px rgba(0,0,0,.55), inset 0 2px 1px rgba(255,255,255,.9), inset 0 -4px 5px rgba(0,0,0,.13);
+    }
+    .key:active { transform: translateY(2px); box-shadow: 0 2px 3px rgba(0,0,0,.5), inset 0 2px 2px rgba(255,255,255,.8), inset 0 -2px 4px rgba(0,0,0,.15); }
+    .number {
+      color: #1a1a1a;
+      background: linear-gradient(158deg, #fff 0%, #eeeef0 55%, #d7d7dd 100%);
+    }
+    .operator, .utility {
+      color: var(--deep-blue);
+      background: linear-gradient(158deg, #ffdf85 0%, #f4c22e 55%, #e0a012 100%);
+    }
+    .operator { font-size: 28px; }
+    .utility { font-size: 16px; }
+    .zero { grid-column: span 2; }
+    .key-spacer { visibility: hidden; pointer-events: none; }
+    .calculate {
+      grid-column: span 5;
+      height: 50px;
+      margin-top: 2px;
+      color: var(--deep-blue);
+      background: linear-gradient(158deg, #ffe488 0%, var(--gold) 50%, #e59c00 100%);
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+
+    .splits-button {
+      min-width: 64px;
+      min-height: 30px;
+      padding: 5px 10px;
+      border: 1.5px solid rgba(255, 194, 30, .9);
+      border-radius: 9px;
+      color: var(--gold-light);
+      background: rgba(7, 28, 67, .28);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .splits-button.active {
+      color: var(--deep-blue);
+      background: var(--gold);
+    }
+    .splits-button:active { transform: translateY(1px); }
+    .splits-panel {
+      display: none;
+      margin: 2px 0 6px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 12px;
+      background: rgba(5, 20, 49, .48);
+    }
+    .splits-panel.visible { display: block; }
+    .splits-panel {
+      max-height: 24dvh;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+    .splits-title {
+      margin: 0 0 7px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .splits-grid {
+      display: grid;
+      gap: 0;
+      justify-content: center;
+    }
+    .splits-header,
+    .split-row {
+      display: grid;
+      grid-template-columns: 90px 90px;
+      column-gap: 20px;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      margin: 0 auto;
+      padding: 5px 0;
+    }
+    .splits-header {
+      padding-top: 2px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255,255,255,.16);
+      color: #aebdd2;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .split-row {
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      color: #dce7f7;
+      font-size: 13px;
+    }
+    .split-row strong {
+      color: var(--gold-light);
+      font-weight: 700;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+    .split-finish { border-bottom: 0; }
+    .app-header {
+      position: relative;
+      width: 340px;
+      max-width: 92vw;
+    }
+    .info-button {
+      position: absolute;
+      top: calc(50% + 6px);
+      right: 8px;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      border: 1px solid rgba(255, 194, 30, .68);
+      border-radius: 50%;
+      color: rgba(255, 212, 81, .82);
+      background: rgba(7, 28, 67, .22);
+      font-size: 13px;
+      font-weight: 700;
+      font-family: Georgia, serif;
+      line-height: 22px;
+      text-align: center;
+      cursor: pointer;
+      transform: translateY(-50%);
+    }
+    .info-button:active { transform: translateY(-50%) scale(.96); }
+    .info-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(3, 12, 31, .76);
+      backdrop-filter: blur(5px);
+    }
+    .info-modal.visible { display: flex; }
+    .info-dialog {
+      position: relative;
+      width: min(420px, 100%);
+      max-height: min(78svh, 620px);
+      overflow-y: auto;
+      padding: 24px 22px 22px;
+      color: #dbe6f7;
+      background: #12336b;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 20px;
+      box-shadow: 0 20px 70px rgba(0,0,0,.55);
+      font: 400 14px/1.55 system-ui, sans-serif;
+    }
+    .info-dialog h2 { margin: 0 34px 12px 0; color: #fff; font-size: 20px; line-height: 1.2; }
+    .info-dialog p { margin: 0 0 12px; }
+    .info-dialog p:last-child { margin-bottom: 0; }
+    .info-dialog strong { color: var(--gold-light); }
+    .info-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      color: #fff;
+      background: rgba(255,255,255,.1);
+      font-size: 23px;
+      line-height: 30px;
+      cursor: pointer;
+    }
+    body.modal-open { overflow: hidden; }
+    .instructions {
+      max-width: 400px;
+      margin: 0;
+      color: var(--text-soft);
+      font: 400 12px/1.5 system-ui, sans-serif;
+      text-align: center;
+    }
+    .instructions strong { color: var(--gold-light); font-weight: 500; }
+    .seo-copy {
+      width: 620px;
+      max-width: 92vw;
+      margin-top: 12px;
+      padding: 18px 20px;
+      color: #cbd7eb;
+      background: rgba(8, 28, 66, .32);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      font: 400 14px/1.55 system-ui, sans-serif;
+    }
+    .seo-copy h2 { margin: 0 0 7px; color: #fff; font-size: 17px; }
+    .seo-copy p { margin: 0; }
+    @media (max-width: 430px) {
+      .page {
+        justify-content: center;
+        gap: 12px;
+        padding:
+          max(18px, env(safe-area-inset-top))
+          10px
+          max(18px, env(safe-area-inset-bottom));
+      }
+      .app-header { width: 100%; max-width: none; }
+      .calculator {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: none;
+        min-height: 0;
+        padding: 24px 14px max(26px, env(safe-area-inset-bottom));
+        border-radius: 24px;
+      }
+      .fields { gap: 24px; }
+      .field-row { min-height: 50px; }
+      .field { gap: 10px; }
+      .pill {
+        width: 92px;
+        flex-basis: 92px;
+        padding: 12px 0;
+        font-size: 17px;
+      }
+      .value { font-size: 24px; }
+      .keypad {
+        gap: 10px;
+        margin-top: 26px;
+        padding-top: 0;
+      }
+      .key { height: clamp(60px, 7.8svh, 70px); }
+      .calculate { height: clamp(58px, 7.3svh, 66px); }
+      .instructions,
+      .seo-copy { flex: 0 0 auto; }
+    }
+    @media (orientation: portrait) and (max-height: 740px) {
+      .page { gap: 8px; padding-top: max(8px, env(safe-area-inset-top)); padding-bottom: max(8px, env(safe-area-inset-bottom)); }
+      .calculator { padding-top: 12px; padding-bottom: 14px; }
+      .fields { gap: 8px; }
+      .keypad { margin-top: 10px; gap: 6px; }
+      .key { height: clamp(39px, 6.3dvh, 52px); }
+      .calculate { height: clamp(40px, 6dvh, 50px); }
+      .splits-panel { max-height: 16dvh; }
+    }
+    @media (orientation: landscape) and (max-height: 550px) {
+      html { height: auto; overflow-y: auto; }
+      body { position: static; height: auto; min-height: 100dvh; overflow-y: auto; }
+      .page {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: 100dvh;
+        overflow: visible;
+        justify-content: flex-start;
+        padding: 12px max(12px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="app-header">
+      <div class="eyebrow">Running</div>
+      <h1>Pace Calculator</h1>
+      <button class="info-button" id="infoButton" type="button" aria-label="Open instructions" aria-haspopup="dialog" aria-controls="infoModal">i</button>
+    </header>
+
+    <section class="calculator" aria-label="Running pace calculator">
+      <div class="fields">
+        <div class="field-row">
+          <div class="field" data-field="time" role="button" tabindex="0" aria-label="Edit time">
+            <div class="pill">Time</div><div class="value" id="timeValue"></div>
+          </div>
+          <button class="splits-button" id="splitsButton" type="button" aria-expanded="false" aria-controls="splitsPanel">Splits</button>
+        </div>
+        <div class="field-row">
+          <div class="field" data-field="dist" role="button" tabindex="0" aria-label="Edit distance">
+            <div class="pill">Distance</div><div class="value" id="distValue"></div>
+          </div>
+          <button class="unit" id="distUnit" type="button" aria-label="Change distance unit">miles ▾</button>
+        </div>
+        <div class="field-row">
+          <div class="field" data-field="pace" role="button" tabindex="0" aria-label="Edit pace">
+            <div class="pill">Pace</div><div class="value" id="paceValue"></div>
+          </div>
+          <button class="unit" id="paceUnit" type="button" aria-label="Change pace unit">/mile ▾</button>
+        </div>
+      </div>
+
+      <section class="splits-panel" id="splitsPanel" aria-live="polite" aria-label="Cumulative race splits">
+        <h2 class="splits-title">Cumulative Splits</h2>
+        <div class="splits-grid" id="splitsGrid"></div>
+      </section>
+
+      <div class="message" id="message" role="status" aria-live="polite"></div>
+
+      <div class="keypad" aria-label="Calculator keypad">
+        <button class="key number" data-key="7">7</button><button class="key number" data-key="8">8</button><button class="key number" data-key="9">9</button><button class="key operator" data-key="DIV">÷</button><span class="key key-spacer" aria-hidden="true"></span>
+        <button class="key number" data-key="4">4</button><button class="key number" data-key="5">5</button><button class="key number" data-key="6">6</button><button class="key operator" data-key="MUL">×</button><button class="key utility" data-key="DEL">⌫</button>
+        <button class="key number" data-key="1">1</button><button class="key number" data-key="2">2</button><button class="key number" data-key="3">3</button><button class="key operator" data-key="SUB">−</button><button class="key utility" data-key="C">Clear</button>
+        <button class="key number zero" data-key="0">0</button><button class="key number" data-key=".">.</button><button class="key operator" data-key="ADD">+</button><button class="key utility" data-key="AC">Clear<br>All</button>
+        <button class="key calculate" data-key="CALC">Calculate</button>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="info-modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle" hidden>
+    <section class="info-dialog">
+      <button class="info-close" id="infoClose" type="button" aria-label="Close instructions">×</button>
+      <h2 id="infoTitle">How to Use</h2>
+      <p>Enter time, distance, and pace values to solve a missing field, or use <strong>+ − × ÷</strong> directly within any selected field. Press <strong>Calculate</strong> to complete the calculation.</p>
+      <p>Use time, distance, and pace together to solve a missing value, or perform arithmetic directly within any individual field.</p>
+      <p>The calculator supports miles, kilometers, and meters, with pace shown per mile or per kilometer. Arithmetic results for time and pace retain tenths of a second when needed for more accurate short-distance calculations.</p>
+      <p>Enter a valid time and distance, then tap <strong>Splits</strong> to view cumulative race splits.</p>
+    </section>
+  </div>
+
+<script>
+(() => {
+  'use strict';
+  document.addEventListener('gesturestart', event => event.preventDefault(), { passive: false });
+  const MI = 1609.344, KM = 1000;
+  const state = {
+    time: '', dist: '', pace: '', distUnit: 'mi', paceUnit: 'mi',
+    focus: 'time', solved: null, acc: null, op: null, opField: null,
+    freshEntry: false, replaceOnType: false, entryMode: 'clock', error: '', splits: [], splitsOpen: false
+  };
+
+  const $ = id => document.getElementById(id);
+  const fields = [...document.querySelectorAll('.field')];
+  const pad2 = n => String(n).padStart(2, '0');
+  const number = value => Number.isFinite(Number(value)) ? Number(value) : 0;
+  const groupsFor = field => field === 'time' ? 3 : 2;
+  const distFactor = unit => unit === 'mi' ? MI : unit === 'km' ? KM : 1;
+
+  function splitDecimal(raw) {
+    const clean = String(raw ?? '').replace(/[^0-9.]/g, '');
+    const firstDot = clean.indexOf('.');
+    if (firstDot < 0) return [clean, ''];
+    return [clean.slice(0, firstDot), clean.slice(firstDot + 1).replace(/\./g, '')];
+  }
+
+  function fmtEntry(raw, maxGroups) {
+    let [whole, frac] = splitDecimal(raw);
+    if (!whole && frac) whole = '0';
+    if (whole.length <= 2) {
+      const value = whole + (frac ? '.' + frac : '');
+      return whole.length === 2 ? ':' + value : value;
+    }
+    const groups = [];
+    while (whole.length > 2 && groups.length < maxGroups - 1) {
+      groups.unshift(whole.slice(-2));
+      whole = whole.slice(0, -2);
+    }
+    groups.unshift(whole);
+    return groups.join(':') + (frac ? '.' + frac : '');
+  }
+
+  function parseClock(value) {
+    if (!value) return 0;
+    const parts = String(value).split(':').map(number);
+    if (parts.length === 1) return parts[0] * 60;
+    if (parts.length === 2) return parts[0] * 60 + parts[1];
+    return parts[0] * 3600 + parts[1] * 60 + parts[2];
+  }
+
+  function fmtClock(seconds, tenths = false) {
+    if (!Number.isFinite(seconds) || seconds <= 0) return '—';
+    const rounded = tenths ? Math.round(seconds * 10) / 10 : Math.round(seconds);
+    const hours = Math.floor(rounded / 3600);
+    const minutes = Math.floor((rounded % 3600) / 60);
+    const secs = rounded - hours * 3600 - minutes * 60;
+    const secText = tenths
+      ? (Math.abs(secs - Math.round(secs)) < 0.0001
+          ? pad2(Math.round(secs))
+          : secs.toFixed(1).padStart(4, '0'))
+      : pad2(Math.round(secs));
+    return hours > 0 ? `${hours}:${pad2(minutes)}:${secText}` : `${minutes}:${secText}`;
+  }
+
+  function fmtPace(seconds, tenths = false) { return fmtClock(seconds, tenths); }
+
+  function fmtSplit(seconds) {
+    if (!Number.isFinite(seconds) || seconds < 0) return '—';
+    const rounded = Math.round(seconds * 10) / 10;
+    const hours = Math.floor(rounded / 3600);
+    const minutes = Math.floor((rounded % 3600) / 60);
+    const secs = rounded - hours * 3600 - minutes * 60;
+    const secText = Math.abs(secs - Math.round(secs)) < 0.0001
+      ? pad2(Math.round(secs))
+      : secs.toFixed(1).padStart(4, '0');
+    return hours > 0 ? `${hours}:${pad2(minutes)}:${secText}` : `${minutes}:${secText}`;
+  }
+
+  function buildSplits() {
+    state.error = '';
+    const totalMeters = number(state.dist) * distFactor(state.distUnit);
+    const totalSeconds = parseClock(fmtEntry(state.time, 3));
+    if (!(totalMeters > 0 && totalSeconds > 0)) {
+      state.splits = [];
+      state.error = 'Enter a valid time and distance to show splits.';
+      render();
+      return;
+    }
+
+    const marks = [];
+    if (totalMeters >= 100) marks.push(100);
+    if (totalMeters >= 200) marks.push(200);
+    for (let meters = 400; meters <= totalMeters + 1e-9; meters += 200) marks.push(meters);
+    const roundedFinish = Math.round(totalMeters * 10) / 10;
+    if (!marks.length || Math.abs(marks[marks.length - 1] - roundedFinish) > 0.05) marks.push(roundedFinish);
+
+    state.splits = marks.map(meters => ({
+      meters,
+      time: totalSeconds * (meters / totalMeters),
+      finish: Math.abs(meters - roundedFinish) <= 0.05
+    }));
+    render();
+  }
+
+
+  function clockToRaw(formatted) { return formatted === '—' ? '' : formatted.replace(/:/g, ''); }
+
+  function evalField(field) {
+    const raw = state[field] || '';
+    if (state.entryMode === 'dec') return number(raw);
+    return parseClock(fmtEntry(raw, groupsFor(field)));
+  }
+
+  function applyOp(a, op, b) {
+    if (op === '+') return a + b;
+    if (op === '-') return a - b;
+    if (op === '*') return a * b;
+    if (op === '/') return b !== 0 ? a / b : NaN;
+    return b;
+  }
+
+  function setArithmeticResult(field, value) {
+    if (!Number.isFinite(value)) {
+      state.error = 'Cannot divide by zero.';
+      return false;
+    }
+    if (value < 0) {
+      state.error = 'The result cannot be negative.';
+      return false;
+    }
+    if (field === 'dist') state.dist = (Math.round(value * 1000) / 1000).toString();
+    else state[field] = clockToRaw(field === 'time' ? fmtClock(value, true) : fmtPace(value, true));
+    return true;
+  }
+
+  function completeArithmetic() {
+    if (state.op == null || state.opField == null) return true;
+    const field = state.opField;
+    const value = evalField(field);
+    const result = applyOp(state.acc, state.op, value);
+    if (!setArithmeticResult(field, result)) return false;
+    state.acc = null; state.op = null; state.opField = null; state.freshEntry = true;
+    state.entryMode = state.focus === 'dist' ? 'dec' : 'clock';
+    return true;
+  }
+
+  function calculate() {
+    state.error = '';
+    const hadArithmetic = state.op != null && state.opField != null;
+    if (!completeArithmetic()) { render(); return; }
+    if (hadArithmetic) {
+      state.solved = state.focus;
+      if (state.splitsOpen) buildSplits();
+      else render();
+      return;
+    }
+
+    const dM = number(state.dist) * distFactor(state.distUnit);
+    const tSec = parseClock(fmtEntry(state.time, 3));
+    const paceSec = parseClock(fmtEntry(state.pace, 2));
+    const pPerM = paceSec / (state.paceUnit === 'mi' ? MI : KM);
+    const empties = ['time', 'dist', 'pace'].filter(field => !String(state[field] || '').trim());
+
+    let target;
+    if (empties.length === 1) target = empties[0];
+    else if (empties.length > 1) {
+      render();
+      return;
+    } else target = state.focus;
+
+    if (target === 'pace') {
+      if (!(dM > 0 && tSec > 0)) state.error = 'Enter a valid time and distance greater than zero.';
+      else state.pace = clockToRaw(fmtPace((tSec / dM) * (state.paceUnit === 'mi' ? MI : KM)));
+    } else if (target === 'time') {
+      if (!(dM > 0 && pPerM > 0)) state.error = 'Enter a valid distance and pace greater than zero.';
+      else state.time = clockToRaw(fmtClock(dM * pPerM));
+    } else {
+      if (!(tSec > 0 && pPerM > 0)) state.error = 'Enter a valid time and pace greater than zero.';
+      else state.dist = ((tSec / pPerM) / distFactor(state.distUnit)).toFixed(2);
+    }
+
+    if (!state.error) state.solved = target;
+    if (state.splitsOpen && !state.error) buildSplits();
+    else render();
+  }
+
+  function displayValue(field) {
+    if (state.opField === field && state.op) {
+      const symbol = ({'+': '+', '-': '−', '*': '×', '/': '÷'})[state.op];
+      let right = '';
+      if (!state.freshEntry) {
+        const raw = state[field] || '';
+        right = ' ' + (state.entryMode === 'dec' ? raw : fmtEntry(raw, groupsFor(field)));
+      }
+      const left = field === 'dist'
+        ? String(Math.round(state.acc * 1000) / 1000)
+        : (field === 'time' ? fmtClock(state.acc, true) : fmtPace(state.acc, true));
+      return `${left} ${symbol}${right}`;
+    }
+    const raw = state[field] || '';
+    const useDecimal = state.focus === field && state.entryMode === 'dec';
+    if ((field === 'time' || field === 'pace') && !useDecimal) return fmtEntry(raw, groupsFor(field)) || '';
+    return raw || '';
+  }
+
+  function render() {
+    $('timeValue').textContent = displayValue('time');
+    $('distValue').textContent = displayValue('dist');
+    $('paceValue').textContent = displayValue('pace');
+    $('distUnit').textContent = ({mi: 'miles ▾', km: 'km ▾', m: 'meters ▾'})[state.distUnit];
+    $('paceUnit').textContent = state.paceUnit === 'mi' ? '/mile ▾' : '/km ▾';
+    fields.forEach(el => {
+      const field = el.dataset.field;
+      el.classList.toggle('focused', state.focus === field);
+      el.classList.toggle('solved', state.solved === field);
+    });
+    const splitsPanel = $('splitsPanel');
+    const splitsGrid = $('splitsGrid');
+    splitsGrid.innerHTML = '';
+    if (state.splits.length > 0) {
+      const header = document.createElement('div');
+      header.className = 'splits-header';
+      header.innerHTML = '<span style="text-align:center">Distance</span><span style="text-align:center">Time</span>';
+      splitsGrid.appendChild(header);
+    }
+    state.splits.forEach(split => {
+      const row = document.createElement('div');
+      row.className = 'split-row' + (split.finish ? ' split-finish' : '');
+      const distanceText = Number.isInteger(split.meters) ? `${split.meters}m` : `${split.meters.toFixed(1)}m`;
+      row.innerHTML = `<span style="text-align:center">${split.finish ? 'Finish · ' : ''}${distanceText}</span><strong>${fmtSplit(split.time)}</strong>`;
+      splitsGrid.appendChild(row);
+    });
+    splitsPanel.classList.toggle('visible', state.splitsOpen && state.splits.length > 0);
+    $('splitsButton').classList.toggle('active', state.splitsOpen);
+    $('splitsButton').setAttribute('aria-expanded', state.splitsOpen ? 'true' : 'false');
+    $('message').textContent = state.error;
+    $('message').classList.toggle('visible', Boolean(state.error));
+  }
+
+
+  function refreshSplitsIfOpen() {
+    if (state.splitsOpen) buildSplits();
+    else render();
+  }
+
+  function focusField(field) {
+    const changedField = state.focus !== field;
+    state.focus = field; state.acc = null; state.op = null; state.opField = null;
+    state.freshEntry = false;
+    state.replaceOnType = changedField && String(state[field] || '').length > 0;
+    state.entryMode = field === 'dist' ? 'dec' : 'clock'; state.error = '';
+    render();
+  }
+
+  function press(key) {
+    const field = state.focus;
+    const nativeMode = field === 'dist' ? 'dec' : 'clock';
+    const ops = {ADD: '+', SUB: '-', MUL: '*', DIV: '/'};
+    state.error = '';
+
+    if (key === 'CALC') { calculate(); return; }
+    if (key === 'AC') {
+      Object.assign(state, {time: '', dist: '', pace: '', solved: null, acc: null, op: null, opField: null, freshEntry: false, replaceOnType: false, entryMode: nativeMode, splits: [], splitsOpen: false});
+      render(); return;
+    }
+    if (key === 'C') {
+      state[field] = '';
+      if (state.opField === field) Object.assign(state, {acc: null, op: null, opField: null, freshEntry: false, replaceOnType: false, entryMode: nativeMode});
+      if (state.solved === field) state.solved = null;
+      refreshSplitsIfOpen(); return;
+    }
+    if (key === 'DEL') {
+      state.replaceOnType = false;
+      if (!state.freshEntry) state[field] = String(state[field]).slice(0, -1);
+      if (state.solved === field) state.solved = null;
+      refreshSplitsIfOpen(); return;
+    }
+    if (ops[key]) {
+      const value = evalField(field);
+      state.acc = state.op != null && state.opField === field && !state.freshEntry ? applyOp(state.acc, state.op, value) : value;
+      state.op = ops[key]; state.opField = field; state.freshEntry = true; state.replaceOnType = false;
+      state.entryMode = (ops[key] === '*' || ops[key] === '/') ? 'dec' : nativeMode;
+      if (state.solved === field) state.solved = null;
+      render(); return;
+    }
+    if (state.freshEntry || state.replaceOnType) {
+      state[field] = '';
+      state.freshEntry = false;
+      state.replaceOnType = false;
+    }
+    if (key === '.') {
+      if (state.entryMode === 'dec' && !String(state[field]).includes('.')) state[field] += '.';
+    } else state[field] += key;
+    if (state.solved === field) state.solved = null;
+    refreshSplitsIfOpen();
+  }
+
+  fields.forEach(el => {
+    el.addEventListener('click', () => focusField(el.dataset.field));
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') focusField(el.dataset.field); });
+  });
+  $('splitsButton').addEventListener('click', () => {
+    state.splitsOpen = !state.splitsOpen;
+    if (state.splitsOpen) buildSplits();
+    else { state.error = ''; render(); }
+  });
+  $('distUnit').addEventListener('click', () => { state.distUnit = ({mi: 'km', km: 'm', m: 'mi'})[state.distUnit]; refreshSplitsIfOpen(); });
+  $('paceUnit').addEventListener('click', () => { state.paceUnit = state.paceUnit === 'mi' ? 'km' : 'mi'; render(); });
+  document.querySelectorAll('[data-key]').forEach(button => button.addEventListener('click', () => press(button.dataset.key)));
+
+  const infoModal = $('infoModal');
+  const infoButton = $('infoButton');
+  const infoClose = $('infoClose');
+  let lastFocusedElement = null;
+
+  function openInfo() {
+    lastFocusedElement = document.activeElement;
+    infoModal.hidden = false;
+    infoModal.classList.add('visible');
+    document.body.classList.add('modal-open');
+    infoClose.focus();
+  }
+
+  function closeInfo() {
+    infoModal.classList.remove('visible');
+    infoModal.hidden = true;
+    document.body.classList.remove('modal-open');
+    if (lastFocusedElement) lastFocusedElement.focus();
+  }
+
+  infoButton.addEventListener('click', openInfo);
+  infoClose.addEventListener('click', closeInfo);
+  infoModal.addEventListener('click', event => { if (event.target === infoModal) closeInfo(); });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !infoModal.hidden) {
+      event.preventDefault();
+      closeInfo();
+      return;
+    }
+    if (event.ctrlKey || event.metaKey || event.altKey) return;
+    const keyMap = {
+      Enter: 'CALC',
+      Backspace: 'DEL',
+      Delete: 'C',
+      Escape: 'AC',
+      '+': 'ADD',
+      '-': 'SUB',
+      '*': 'MUL',
+      '/': 'DIV',
+      '.': '.'
+    };
+    const mapped = /^[0-9]$/.test(event.key) ? event.key : keyMap[event.key];
+    if (!mapped) return;
+    event.preventDefault();
+    press(mapped);
+  });
+
+  render();
+  const initialField = document.querySelector('[data-field="time"]');
+  if (initialField) initialField.focus();
+})();
+</script>
+</body>
+</html>

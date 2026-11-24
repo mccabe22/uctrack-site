@@ -1,0 +1,70 @@
+---
+// Every saved page (including the home page) plus all 601 news posts.
+import Base from '../layouts/Base.astro';
+import posts from '../data/posts.json';
+import { pages, renderPageHtml } from '../lib/content.js';
+import { esc } from '../lib/util.js';
+
+export function getStaticPaths() {
+  const pagePaths = pages.map((p) => ({
+    params: { slug: p.path === '/' ? undefined : p.path.replace(/^\/|\/$/g, '') },
+    props: { kind: 'page', page: p },
+  }));
+  const postPaths = posts.map((post) => ({ params: { slug: post.slug }, props: { kind: 'post', post } }));
+  return [...pagePaths, ...postPaths];
+}
+
+const { kind, page, post } = Astro.props;
+let html = '';
+if (kind === 'page') html = await renderPageHtml(page);
+
+const strip = (s = '') => s.replace(/<[^>]*>/g, '').replace(/&#8217;/g, '’').replace(/&#8216;/g, '‘').replace(/&#8220;/g, '“').replace(/&#8221;/g, '”').replace(/&#038;|&amp;/g, '&').replace(/&#8211;/g, '–').replace(/&#8212;/g, '—').replace(/&hellip;|&#8230;/g, '…').replace(/&nbsp;/g, ' ');
+const SITE = 'Union Catholic Cross Country | Track + Field';
+let postMeta = null;
+if (kind === 'post') {
+  const desc = strip(post.excerpt).replace(/\s*\[…\]\s*$/, '…').replace(/\s+/g, ' ').trim();
+  postMeta = { title: `${strip(post.title)} – ${SITE}`, description: desc.length > 160 ? desc.slice(0, 157) + '…' : desc };
+}
+const img = post?.image;
+---
+{kind === 'page' ? (
+  <Base title={page.title} description={page.description} path={page.path} ogImage={page.ogImage} ogType={page.ogType}
+        bodyClass={page.bodyClass} styles={page.styles} headInline={page.headInline} scripts={page.scripts}>
+    <main id={page.mainId} class={page.mainClass || undefined} set:html={html}></main>
+  </Base>
+) : (
+  <Base title={postMeta.title} description={postMeta.description} path={`/${post.slug}/`} ogImage={img?.src} ogType="article"
+        bodyClass={`wp-singular post-template-default single single-post postid-${post.id} single-format-standard wp-custom-logo wp-embed-responsive wp-theme-uc-championship`}>
+    <main id="primary" class="site-main inner-page">
+      <section class={`inner-hero inner-hero--article${img ? ' inner-hero--image' : ''}`} style={img ? `--inner-hero-image:url(${img.src});` : undefined}>
+        <div class="inner-hero__overlay"></div>
+        <div class="site-shell inner-hero__content">
+          {post.categories[0] && <p class="eyebrow">{post.categories[0].name}</p>}
+          <h1 set:html={post.title}></h1>
+          <div class="article-meta">
+            <time datetime={post.date}>{post.dateText}</time>
+            <span aria-hidden="true">•</span>
+            <span>{post.author}</span>
+          </div>
+        </div>
+      </section>
+      <section class="section inner-content-section">
+        <div class="site-shell article-shell">
+          <article class={`article article--single ${post.classList}`}>
+            {img && (
+              <figure class="article__hero article__hero--floating">
+                <img width={img.w} height={img.h} src={img.src} class="attachment-full size-full wp-post-image" alt={img.alt} decoding="async"
+                     srcset={img.srcset || undefined} sizes={img.srcset ? `(max-width: ${img.w}px) 100vw, ${img.w}px` : undefined} />
+              </figure>
+            )}
+            <div class="article__content entry-content" set:html={post.content}></div>
+            <footer class="article-footer">
+              <div class="article-footer__categories" set:html={post.categories.map((c) => `<a href="/category/${c.slug}/" rel="category tag">${esc(c.name)}</a>`).join(' ')}></div>
+              <a class="text-link" href="/category/all-posts/">← MORE UNION CATHOLIC NEWS</a>
+            </footer>
+          </article>
+        </div>
+      </section>
+    </main>
+  </Base>
+)}
