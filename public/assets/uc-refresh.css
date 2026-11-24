@@ -60,3 +60,10 @@ a:focus-visible,button:focus-visible{outline:3px solid #3d8cff;outline-offset:3p
 .article__content iframe,.article__content embed,.article__content video,.article__content object{max-width:100%}
 .article__content pre{max-width:100%;overflow-x:auto;white-space:pre}
 @media(max-width:800px){.article__content table{display:block;max-width:100%;overflow-x:auto}.article__content img{height:auto}}
+
+/* Camp page: "coming soon" notice */
+.uc-camp-soon{display:flex;align-items:center;gap:18px;margin:34px 0 0;padding:20px 24px;border:1px solid #f0d99a;border-left:5px solid #e0a800;border-radius:16px;background:#fff8e6;color:#3d2c00}
+.uc-camp-soon__badge{flex:none;padding:6px 12px;border-radius:999px;background:#e0a800;color:#fff;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.uc-camp-soon strong{display:block;color:var(--navy,#031222);font-size:20px;line-height:1.2}
+.uc-camp-soon p{margin:4px 0 0!important;color:#5a4a1d!important;font-size:15px}
+@media(max-width:600px){.uc-camp-soon{flex-direction:column;align-items:flex-start;gap:10px;padding:18px}}
