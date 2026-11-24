@@ -17,7 +17,7 @@ interface Props {
 }
 const {
   title, description = '', path, ogImage = '', ogType = 'website', bodyClass = '',
-  styles = ['main.css'], headInline = [], scripts = [{ src: '/assets/main.js' }], noindex = false,
+  styles = ['main.css', 'uc-refresh.css'], headInline = [], scripts = [{ src: '/assets/main.js' }], noindex = false,
 } = Astro.props;
 const site = 'https://www.uctrack.com';
 const url = site + path;

@@ -12,25 +12,28 @@
         return year+'-'+String(month).padStart(2,'0')+'-'+String(day).padStart(2,'0');
     }
     function start() {
-        const details=document.getElementById('uc-last-details');
-        const link=document.getElementById('uc-last-link');
-        const title=document.getElementById('uc-last-title');
+        // Both strip rows deep-link to their meet on the schedule page (results open for the last meet).
+        [['uc-next-details','uc-next-link','uc-next-title','View details for '],['uc-last-details','uc-last-link','uc-last-title','View results for ']].forEach(function (ids) {
+        const details=document.getElementById(ids[0]);
+        const link=document.getElementById(ids[1]);
+        const title=document.getElementById(ids[2]);
         if (details && link && title) {
             const update=function () {
                 const cfg=window.UCMeetBar||{};
                 const year=String(cfg.seasonLabel||'').match(/\b20\d{2}\b/);
                 const key=dateKey(details.textContent,year?year[0]:'');
-                if (!key || !cfg.scheduleUrl || /No Results Yet/i.test(title.textContent)) return;
+                if (!key || !cfg.scheduleUrl || /No Results Yet|Season Complete/i.test(title.textContent)) return;
                 const url=new URL(cfg.scheduleUrl,window.location.href);
                 if (url.origin!==window.location.origin) return;
                 url.searchParams.set('uc_meet',key);
                 link.href=url.href;
-                link.setAttribute('aria-label','View results for '+title.textContent.trim());
+                link.setAttribute('aria-label',ids[3]+title.textContent.trim());
             };
             update();
             const observer=new MutationObserver(update);
             [details,title].forEach(el=>observer.observe(el,{childList:true,characterData:true,subtree:true}));
         }
+        });
         function openMeet() {
             const key=new URL(window.location.href).searchParams.get('uc_meet');
             if (!key || !/^20\d{2}-\d{2}-\d{2}$/.test(key)) return;

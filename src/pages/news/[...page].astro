@@ -1,0 +1,21 @@
+---
+// The News page: every story, newest first, with category buttons.
+import NewsArchive from '../../components/NewsArchive.astro';
+import { getPosts } from '../../lib/news.js';
+import { filterCats } from '../../lib/newsCats.js';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const cats = filterCats(posts);
+  const total = Math.max(1, Math.ceil(posts.length / 12));
+  return Array.from({ length: total }, (_, i) => ({
+    params: { page: i === 0 ? undefined : `page/${i + 1}` },
+    props: { cats, n: i + 1, total, items: posts.slice(i * 12, (i + 1) * 12) },
+  }));
+}
+const { cats, n, total, items } = Astro.props;
+---
+<NewsArchive heading="News" base="/news/" n={n} total={total} items={items} cats={cats}
+  title={`News${n > 1 ? ` – Page ${n}` : ''} – Union Catholic Cross Country | Track + Field`}
+  description="Union Catholic Cross Country and Track & Field news, meet recaps and results."
+  bodyClass="page news-page wp-custom-logo wp-embed-responsive wp-theme-uc-championship" />

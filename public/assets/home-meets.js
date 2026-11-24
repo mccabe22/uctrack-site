@@ -98,14 +98,20 @@
     el.href = href;
     el.removeAttribute('target');
     el.removeAttribute('rel');
-    if (text) el.textContent = text;
+    // The meet strip keeps its layout; only the short action word changes.
+    const action = document.getElementById(id.replace('-link', '-action'));
+    if (action && text) {
+      action.textContent = /RESULTS/i.test(text) ? 'Results' : /FULL SCHEDULE/i.test(text) ? 'Details' : 'Schedule';
+    } else if (text) {
+      el.textContent = text;
+    }
   }
 
   function update(lastMeet, nextMeet) {
     const scheduleUrl = config.scheduleUrl || '/scheduleresults/cross-country-scheduleresults/';
 
     if (nextMeet) {
-      setText('uc-next-label', 'UP NEXT');
+      setText('uc-next-label', 'Up next');
       setText('uc-next-title', nextMeet.name);
       let details = meetDateLabel(nextMeet);
       if (nextMeet.location) details += ' • ' + nextMeet.location;
@@ -113,21 +119,21 @@
       setText('uc-next-details', details);
       setLink('uc-next-link', scheduleUrl, 'VIEW FULL SCHEDULE →');
     } else {
-      setText('uc-next-label', 'UP NEXT');
+      setText('uc-next-label', 'Up next');
       setText('uc-next-title', 'Season Complete');
       setText('uc-next-details', config.seasonLabel || 'Cross Country');
       setLink('uc-next-link', scheduleUrl, 'VIEW FULL SCHEDULE →');
     }
 
     if (lastMeet) {
-      setText('uc-last-label', 'LAST MEET');
+      setText('uc-last-label', 'Last meet');
       setText('uc-last-title', lastMeet.name);
       let details = meetDateLabel(lastMeet);
       if (lastMeet.location) details += ' • ' + lastMeet.location;
       setText('uc-last-details', details);
       setLink('uc-last-link', scheduleUrl, 'VIEW RESULTS →');
     } else {
-      setText('uc-last-label', 'LAST MEET');
+      setText('uc-last-label', 'Last meet');
       setText('uc-last-title', 'No Results Yet');
       setText('uc-last-details', config.seasonLabel || 'Cross Country');
       setLink('uc-last-link', scheduleUrl, 'VIEW SCHEDULE →');

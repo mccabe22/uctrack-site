@@ -1,61 +1,27 @@
 ---
-// News category archives, 12 stories per page, matching the old WordPress archive layout.
-import Base from '../../../layouts/Base.astro';
+// News category archives, 12 stories per page.
+import NewsArchive from '../../../components/NewsArchive.astro';
 import { getPosts } from '../../../lib/news.js';
-import { esc } from '../../../lib/util.js';
-
+import { filterCats } from '../../../lib/newsCats.js';
 
 export async function getStaticPaths() {
   const posts = await getPosts();
+  const cats = filterCats(posts);
   const categories = [...new Map(posts.flatMap((p) => p.categories).map((c) => [c.slug, c])).values()];
   const out = [];
   for (const cat of categories) {
     const list = posts.filter((p) => p.categories.some((c) => c.slug === cat.slug));
     const total = Math.max(1, Math.ceil(list.length / 12));
     for (let n = 1; n <= total; n++) {
-      out.push({ params: { cat: cat.slug, page: n === 1 ? undefined : `page/${n}` }, props: { cat, n, total, items: list.slice((n - 1) * 12, n * 12) } });
+      out.push({ params: { cat: cat.slug, page: n === 1 ? undefined : `page/${n}` }, props: { cat, cats, n, total, items: list.slice((n - 1) * 12, n * 12) } });
     }
   }
   return out;
 }
-const { cat, n, total, items } = Astro.props;
-const base = `/category/${cat.slug}/`;
-const href = (i) => (i === 1 ? base : `${base}page/${i}/`);
-// WordPress-style pagination: first, last, current ±1, with dots between gaps.
-const shown = [...new Set([1, n - 1, n, n + 1, total])].filter((i) => i >= 1 && i <= total).sort((a, b) => a - b);
-let nav = '';
-if (n > 1) nav += `<a class="prev page-numbers" href="${href(n - 1)}">← PREVIOUS</a>\n`;
-shown.forEach((i, idx) => {
-  if (idx && i - shown[idx - 1] > 1) nav += '<span class="page-numbers dots">…</span>\n';
-  nav += i === n ? `<span aria-current="page" class="page-numbers current">${i}</span>\n` : `<a class="page-numbers" href="${href(i)}">${i}</a>\n`;
-});
-if (n < total) nav += `<a class="next page-numbers" href="${href(n + 1)}">NEXT →</a>`;
-const card = (p) => {
-  const img = p.image?.card
-    ? `<img${p.image.card.w ? ` width="${p.image.card.w}" height="${p.image.card.h}"` : ''} src="${esc(p.image.card.src)}" class="attachment-uc-card size-uc-card wp-post-image" alt="${esc(p.image.alt)}" decoding="async" loading="lazy" />`
-    : '<span>UC</span>';
-  const plain = p.title.replace(/<[^>]*>/g, '');
-  return `<article class="news-card news-card--archive ${esc(p.classList)}"><a class="news-card__image" href="/${p.slug}/" aria-label="${esc(plain)}">${img}</a><div class="news-card__body"><div class="news-card__meta"><time>${esc(p.dateText)}</time><span>${esc(p.categories[0]?.name || '')}</span></div><h2><a href="/${p.slug}/">${p.title}</a></h2>${p.excerpt}<a class="text-link" href="/${p.slug}/">READ STORY →</a></div></article>`;
-};
-const title = `${cat.name}${n > 1 ? ` – Page ${n}` : ''} – Union Catholic Cross Country | Track + Field`;
+const { cat, cats, n, total, items } = Astro.props;
 ---
-<Base title={title} description={`Union Catholic Cross Country and Track & Field news: ${cat.name}.`} path={href(n)}
-      bodyClass={`archive category category-${cat.slug} wp-custom-logo wp-embed-responsive wp-theme-uc-championship`}>
-  <main id="primary" class="site-main inner-page">
-    <section class="inner-hero inner-hero--compact">
-      <div class="inner-hero__overlay"></div>
-      <div class="site-shell inner-hero__content"><h1>Category: <span>{cat.name}</span></h1></div>
-    </section>
-    <section class="section section--muted archive-section">
-      <div class="site-shell">
-        <div class="archive-grid archive-grid--polished" set:html={items.map(card).join('')}></div>
-        {total > 1 && (
-          <nav class="navigation pagination" aria-label="Posts pagination">
-            <h2 class="screen-reader-text">Posts pagination</h2>
-            <div class="nav-links" set:html={nav}></div>
-          </nav>
-        )}
-      </div>
-    </section>
-  </main>
-</Base>
+<NewsArchive heading={`Category: <span>${cat.name.replace(/&/g, '&amp;')}</span>`} base={`/category/${cat.slug}/`} n={n} total={total} items={items}
+  cats={cats} activeCat={cat.slug === 'all-posts' ? '' : cat.slug}
+  title={`${cat.name}${n > 1 ? ` – Page ${n}` : ''} – Union Catholic Cross Country | Track + Field`}
+  description={`Union Catholic Cross Country and Track & Field news: ${cat.name}.`}
+  bodyClass={`archive category category-${cat.slug} wp-custom-logo wp-embed-responsive wp-theme-uc-championship`} />

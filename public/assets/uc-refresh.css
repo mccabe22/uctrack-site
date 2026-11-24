@@ -1,0 +1,38 @@
+/* Design refinements carried over from the 2026 pilot: light meet strip, menu fit, focus outlines, news filters. */
+
+/* Meet strip (replaces the solid blue Up Next / Last Meet band) */
+.meet-strip{background:#f4f6fa;color:#102247;border-block:1px solid #dbe2ec}
+.meet-strip__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.meet-strip__row{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"badge action" "title action" "details action";align-items:center;column-gap:.65rem;padding:.55rem .85rem}
+.meet-strip__row+.meet-strip__row{border-left:1px solid #dbe2ec}
+.meet-strip__row:hover{background:#e7edf6}
+.meet-strip__row:focus-visible{outline-offset:-3px}
+.meet-strip__badge{grid-area:badge;justify-self:start;padding:.05rem .35rem;border-radius:.2rem;background:#e0e7f1;color:#344960;font-size:.75rem;font-weight:800;line-height:1.25;text-transform:uppercase;letter-spacing:.035em}
+.meet-strip__badge--next{background:#f8ebc8;color:#644509}
+.meet-strip__title{grid-area:title;margin-top:.22rem;font-size:.97rem;line-height:1.2}
+.meet-strip__details{grid-area:details;margin-top:.15rem;color:#425671;font-size:.875rem;line-height:1.25}
+.meet-strip__action{grid-area:action;color:#124b9d;font-size:.875rem;font-weight:800;text-decoration:underline;text-underline-offset:.2em}
+@media(max-width:720px){
+  .meet-strip__grid{grid-template-columns:minmax(0,1fr);width:100%}
+  .meet-strip__row{padding-inline:clamp(.8rem,4vw,1.5rem)}
+  .meet-strip__row+.meet-strip__row{border-left:0;border-top:1px solid #dbe2ec}
+}
+
+/* Menu: keep labels on one line; drop social icons where the menu gets tight */
+.site-header .menu a{white-space:nowrap}
+@media(min-width:1051px) and (max-width:1250px){.site-header .header-social{display:none}}
+
+/* Visible keyboard focus */
+a:focus-visible,button:focus-visible{outline:3px solid #3d8cff;outline-offset:3px}
+
+/* News category buttons */
+.uc-news-cats{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
+.uc-news-cats a{padding:8px 14px;border:1px solid #dbe2ec;background:#fff;color:var(--navy,#031222);font-size:.72rem;font-weight:900;letter-spacing:.03em;text-transform:uppercase;transition:background .2s,border-color .2s,color .2s}
+.uc-news-cats a:hover{border-color:#9dbdf0}
+.uc-news-cats a.is-active{background:var(--blue,#0756d8);border-color:var(--blue,#0756d8);color:#fff}
+
+/* The old blue band styled #uc-last-link as a button; reset it inside the strip. */
+#uc-meet-grid #uc-last-link,#uc-meet-grid #uc-next-link{grid-column:auto;width:auto;min-height:0;margin:0;align-self:stretch;border:0;border-radius:0;background:transparent;color:inherit}
+#uc-meet-grid #uc-last-link{border-left:1px solid #dbe2ec}
+#uc-meet-grid #uc-last-link:hover,#uc-meet-grid #uc-next-link:hover{background:#e7edf6;color:inherit}
+@media(max-width:720px){#uc-meet-grid #uc-last-link{border-left:0;border-top:1px solid #dbe2ec}}

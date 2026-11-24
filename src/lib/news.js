@@ -34,7 +34,7 @@ export async function getPosts() {
     let image = null;
     if (e.data.image) {
       image = old?.image && old.image.src === e.data.image
-        ? { ...old.image, alt: e.data.image_alt ?? old.image.alt }
+        ? { ...old.image, alt: e.data.image_alt ?? old.image.alt, card: old.image.card || { src: old.image.src, w: old.image.w, h: old.image.h } }
         : { src: e.data.image, alt: e.data.image_alt || '', w: null, h: null, srcset: '', card: { src: e.data.image, w: null, h: null } };
     }
     const classList = old?.classList || ['post', 'type-post', 'status-publish', 'format-standard', image ? 'has-post-thumbnail' : '', 'hentry', ...cats.map((c) => `category-${c.slug}`)].filter(Boolean).join(' ');
