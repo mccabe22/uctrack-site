@@ -5,6 +5,17 @@ import { render } from 'astro:content';
 import { getPosts } from '../lib/news.js';
 import { pages, renderPageHtml } from '../lib/content.js';
 import { esc } from '../lib/util.js';
+import seasons from '../data/seasons.json';
+
+// Homepage meet strip: which schedule sheet to read for each part of the year.
+function meetBarScript() {
+  const list = [
+    { from: '08-01', spreadsheetId: seasons.xc.sheet, sheetName: 'Schedule', sheetRange: 'A2:D', scheduleUrl: '/scheduleresults/cross-country-scheduleresults/', seasonLabel: `${seasons.xc.year} Cross Country` },
+    { from: '12-09', spreadsheetId: seasons.winter.sheet, sheetName: 'Schedule', sheetRange: 'B2:E', scheduleUrl: '/scheduleresults/winter-track-field-scheduleresults/', seasonLabel: `${seasons.winter.label} Winter Track & Field` },
+  ];
+  if (seasons.spring?.current) list.push({ from: '03-21', spreadsheetId: seasons.spring.sheet, sheetName: 'Schedule', sheetRange: 'A2:D', scheduleUrl: '/scheduleresults/spring-track-field-scheduleresults/', seasonLabel: `${seasons.spring.label} Spring Track & Field` });
+  return `var UCMeetBar = ${JSON.stringify({ seasons: list, cacheTtl: '600000', fallbackMs: '1800' })};`;
+}
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -32,7 +43,8 @@ const Content = post ? (await render(post.entry)).Content : null;
 ---
 {kind === 'page' ? (
   <Base title={page.title} description={page.description} path={page.path} ogImage={page.ogImage} ogType={page.ogType}
-        bodyClass={page.bodyClass} styles={page.styles} headInline={page.headInline} scripts={page.scripts}>
+        bodyClass={page.bodyClass} styles={page.styles} headInline={page.headInline}
+        scripts={page.scripts.map((sc) => (sc.inline && sc.inline.includes('UCMeetBar') ? { inline: meetBarScript() } : sc))}>
     <main id={page.mainId} class={page.mainClass || undefined} set:html={html}></main>
   </Base>
 ) : (

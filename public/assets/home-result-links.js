@@ -20,8 +20,11 @@
         if (details && link && title) {
             const update=function () {
                 const cfg=window.UCMeetBar||{};
-                const year=String(cfg.seasonLabel||'').match(/\b20\d{2}\b/);
-                const key=dateKey(details.textContent,year?year[0]:'');
+                // "2026-27" seasons: Jan-Jun meets fall in the second year.
+                const ym=String(cfg.seasonLabel||'').match(/\b(20\d{2})(?:[-–](\d{2}))?\b/);
+                const mo=String(details.textContent).match(/\b(Jan|Feb|Mar|Apr|May|Jun)/i);
+                const yr=ym?(ym[2]&&mo?'20'+ym[2]:ym[1]):'';
+                const key=dateKey(details.textContent,yr);
                 if (!key || !cfg.scheduleUrl || /No Results Yet|Season Complete/i.test(title.textContent)) return;
                 const url=new URL(cfg.scheduleUrl,window.location.href);
                 if (url.origin!==window.location.origin) return;

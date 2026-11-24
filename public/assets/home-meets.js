@@ -1,7 +1,19 @@
 (function () {
   'use strict';
 
-  const config = window.UCMeetBar || {};
+  // Pick the sport in season today (each entry starts on its "from" MM-DD and runs until the next one).
+  function pickSeason(cfg) {
+    if (!cfg.seasons || !cfg.seasons.length) return cfg;
+    const p = {};
+    new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', month: '2-digit', day: '2-digit' })
+      .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+    const today = p.month + '-' + p.day;
+    const sorted = cfg.seasons.slice().sort(function (a, b) { return a.from < b.from ? -1 : 1; });
+    let chosen = sorted[sorted.length - 1];
+    sorted.forEach(function (s) { if (s.from <= today) chosen = s; });
+    return Object.assign({}, cfg, chosen);
+  }
+  const config = window.UCMeetBar = pickSeason(window.UCMeetBar || {});
   const grid = document.getElementById('uc-meet-grid');
   if (!grid || !config.spreadsheetId) return;
 

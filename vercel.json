@@ -3,6 +3,11 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/site-map/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/team/",
       "destination": "/",
       "permanent": true
