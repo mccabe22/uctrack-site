@@ -1,23 +1,14 @@
 (function () {
   'use strict';
 
-  // Pick the sport in season today (each entry starts on its "from" MM-DD and runs until the next one).
-  function pickSeason(cfg) {
-    if (!cfg.seasons || !cfg.seasons.length) return cfg;
-    const p = {};
-    new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', month: '2-digit', day: '2-digit' })
-      .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
-    const today = p.month + '-' + p.day;
-    const sorted = cfg.seasons.slice().sort(function (a, b) { return a.from < b.from ? -1 : 1; });
-    let chosen = sorted[sorted.length - 1];
-    sorted.forEach(function (s) { if (s.from <= today) chosen = s; });
-    return Object.assign({}, cfg, chosen);
-  }
-  const config = window.UCMeetBar = pickSeason(window.UCMeetBar || {});
+  // Every configured season's schedule is read; the strip shows the most recent finished meet
+  // and the next upcoming one across all of them (e.g. last XC meet + first winter meet in early December).
+  const config = window.UCMeetBar || {};
+  const seasons = config.seasons && config.seasons.length ? config.seasons : (config.spreadsheetId ? [config] : []);
   const grid = document.getElementById('uc-meet-grid');
-  if (!grid || !config.spreadsheetId) return;
+  if (!grid || !seasons.length) return;
 
-  const CACHE_KEY = 'ucMeetBar:v1:' + config.spreadsheetId + ':' + (config.sheetName || 'Schedule');
+  const CACHE_KEY = 'ucMeetBar:v2:' + seasons.map(function (x) { return x.spreadsheetId; }).join(',');
   const CACHE_TTL = Number(config.cacheTtl || 600000);
   const FALLBACK_MS = Number(config.fallbackMs || 1800);
 
@@ -119,8 +110,17 @@
     }
   }
 
+  function meetUrl(meet) {
+    const base = (meet && meet.scheduleUrl) || seasons[0].scheduleUrl || '/scheduleresults/';
+    if (!meet || !meet.start) return base;
+    const d = new Date(meet.start);
+    const key = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    return base + (base.indexOf('?') === -1 ? '?' : '&') + 'uc_meet=' + key;
+  }
+
   function update(lastMeet, nextMeet) {
-    const scheduleUrl = config.scheduleUrl || '/scheduleresults/cross-country-scheduleresults/';
+    const scheduleUrl = (nextMeet && nextMeet.scheduleUrl) || (lastMeet && lastMeet.scheduleUrl) || seasons[0].scheduleUrl || '/scheduleresults/';
+    const seasonLabel = (lastMeet && lastMeet.seasonLabel) || seasons[0].seasonLabel || '';
 
     if (nextMeet) {
       setText('uc-next-label', 'Up next');
@@ -129,11 +129,11 @@
       if (nextMeet.location) details += ' • ' + nextMeet.location;
       if (nextMeet.time) details += ' • ' + nextMeet.time;
       setText('uc-next-details', details);
-      setLink('uc-next-link', scheduleUrl, 'VIEW FULL SCHEDULE →');
+      setLink('uc-next-link', meetUrl(nextMeet), 'VIEW FULL SCHEDULE →');
     } else {
       setText('uc-next-label', 'Up next');
       setText('uc-next-title', 'Season Complete');
-      setText('uc-next-details', config.seasonLabel || 'Cross Country');
+      setText('uc-next-details', seasonLabel);
       setLink('uc-next-link', scheduleUrl, 'VIEW FULL SCHEDULE →');
     }
 
@@ -143,11 +143,11 @@
       let details = meetDateLabel(lastMeet);
       if (lastMeet.location) details += ' • ' + lastMeet.location;
       setText('uc-last-details', details);
-      setLink('uc-last-link', scheduleUrl, 'VIEW RESULTS →');
+      setLink('uc-last-link', meetUrl(lastMeet), 'VIEW RESULTS →');
     } else {
       setText('uc-last-label', 'Last meet');
       setText('uc-last-title', 'No Results Yet');
-      setText('uc-last-details', config.seasonLabel || 'Cross Country');
+      setText('uc-last-details', seasonLabel);
       setLink('uc-last-link', scheduleUrl, 'VIEW SCHEDULE →');
     }
 
@@ -172,51 +172,55 @@
     } catch (e) {}
   }
 
-  window.ucMeetFeed = function (response) {
-    try {
-      if (!response || !response.table || !response.table.rows) {
-        reveal();
-        return;
-      }
+  function rowsToMeets(response, season) {
+    if (!response || !response.table || !response.table.rows) return [];
+    return response.table.rows.map(function (row) {
+      const c = row.c || [];
+      const dates = parseMeetDates(c[0]);
+      if (!dates || !c[1] || !c[1].v) return null;
+      return {
+        start: dates.start.toISOString(),
+        end: dates.end.toISOString(),
+        name: c[1].f || c[1].v || '',
+        location: c[2] ? (c[2].f || c[2].v || '') : '',
+        time: c[3] ? (c[3].f || c[3].v || '') : '',
+        scheduleUrl: season.scheduleUrl,
+        seasonLabel: season.seasonLabel
+      };
+    }).filter(Boolean);
+  }
 
-      const meets = response.table.rows.map(row => {
-        const c = row.c || [];
-        const dates = parseMeetDates(c[0]);
-        if (!dates || !c[1] || !c[1].v) return null;
-        return {
-          start: dates.start.toISOString(),
-          end: dates.end.toISOString(),
-          name: c[1].f || c[1].v || '',
-          location: c[2] ? (c[2].f || c[2].v || '') : '',
-          time: c[3] ? (c[3].f || c[3].v || '') : ''
-        };
-      }).filter(Boolean).sort((a, b) => new Date(a.start) - new Date(b.start));
-
-      const today = nyToday();
-      const completed = meets.filter(meet => new Date(meet.end) < today);
-      const currentOrUpcoming = meets.filter(meet => new Date(meet.end) >= today);
-      const lastMeet = completed.length ? completed[completed.length - 1] : null;
-      const nextMeet = currentOrUpcoming.length ? currentOrUpcoming[0] : null;
-
-      writeCache(lastMeet, nextMeet);
-      update(lastMeet, nextMeet);
-    } catch (error) {
-      console.error('UC Meet Automation:', error);
-      reveal();
-    }
-  };
+  function finish(all) {
+    const meets = all.sort(function (a, b) { return new Date(a.start) - new Date(b.start); });
+    const today = nyToday();
+    const completed = meets.filter(function (m) { return new Date(m.end) < today; });
+    const upcoming = meets.filter(function (m) { return new Date(m.end) >= today; });
+    // Same-day meets: show the one listed first on the schedule.
+    let lastMeet = completed.length ? completed[completed.length - 1] : null;
+    if (lastMeet) lastMeet = completed.find(function (m) { return m.end === lastMeet.end; });
+    const nextMeet = upcoming.length ? upcoming[0] : null;
+    if (meets.length) writeCache(lastMeet, nextMeet);
+    update(lastMeet, nextMeet);
+  }
 
   if (readCache()) return;
 
-  const feed = document.createElement('script');
-  feed.src = 'https://docs.google.com/spreadsheets/d/' + config.spreadsheetId +
-    '/gviz/tq?sheet=' + encodeURIComponent(config.sheetName || 'Schedule') +
-    '&range=' + encodeURIComponent(config.sheetRange || 'A2:D') +
-    '&headers=1&tqx=' + encodeURIComponent('out:json;responseHandler:ucMeetFeed');
-  feed.async = true;
-  feed.onerror = function () {
-    window.clearTimeout(fallbackTimer);
-    reveal();
-  };
-  document.head.appendChild(feed);
+  const collected = [];
+  let pending = seasons.length;
+  function done() { pending -= 1; if (pending === 0) { try { finish(collected); } catch (e) { console.error('UC Meet Automation:', e); reveal(); } } }
+  seasons.forEach(function (season, i) {
+    const handler = 'ucMeetFeed' + i;
+    window[handler] = function (response) {
+      try { Array.prototype.push.apply(collected, rowsToMeets(response, season)); } catch (e) { console.error('UC Meet Automation:', e); }
+      done();
+    };
+    const feed = document.createElement('script');
+    feed.src = 'https://docs.google.com/spreadsheets/d/' + season.spreadsheetId +
+      '/gviz/tq?sheet=' + encodeURIComponent(season.sheetName || 'Schedule') +
+      '&range=' + encodeURIComponent(season.sheetRange || 'A2:D') +
+      '&headers=1&tqx=' + encodeURIComponent('out:json;responseHandler:' + handler);
+    feed.async = true;
+    feed.onerror = done;
+    document.head.appendChild(feed);
+  });
 })();

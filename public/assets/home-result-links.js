@@ -25,6 +25,7 @@
                 const mo=String(details.textContent).match(/\b(Jan|Feb|Mar|Apr|May|Jun)/i);
                 const yr=ym?(ym[2]&&mo?'20'+ym[2]:ym[1]):'';
                 const key=dateKey(details.textContent,yr);
+                if (/[?&]uc_meet=/.test(link.getAttribute('href')||'')) return;
                 if (!key || !cfg.scheduleUrl || /No Results Yet|Season Complete/i.test(title.textContent)) return;
                 const url=new URL(cfg.scheduleUrl,window.location.href);
                 if (url.origin!==window.location.origin) return;
