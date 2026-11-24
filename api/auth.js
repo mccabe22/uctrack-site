@@ -10,7 +10,7 @@ export default function handler(req, res) {
   }
   const state = crypto.randomBytes(16).toString('hex');
   const host = req.headers['x-forwarded-host'] || req.headers.host;
-  const redirect = `https://${host}/api/callback`;
+  const redirect = `https://${host}/api/callback/`;
   res.setHeader('Set-Cookie', `uc_oauth_state=${state}; Path=/api; HttpOnly; Secure; SameSite=Lax; Max-Age=600`);
   const url = new URL('https://github.com/login/oauth/authorize');
   url.searchParams.set('client_id', clientId);
