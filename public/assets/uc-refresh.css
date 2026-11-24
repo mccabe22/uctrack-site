@@ -49,3 +49,8 @@ a:focus-visible,button:focus-visible{outline:3px solid #3d8cff;outline-offset:3p
 .mobile-nav .mobile-social svg{display:block;margin:0}
 /* no doubled divider line above the social icons */
 .mobile-nav>ul>li:last-child{border-bottom:0}
+
+/* News card photos: 3:2 frame (the shape of most team photos) so less gets cropped */
+.news-card__image{position:relative}
+.news-grid--home .news-card__image,.archive-grid .news-card__image{height:auto;aspect-ratio:3/2}
+.news-card__image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}

@@ -11,6 +11,7 @@ const news = defineCollection({
     categories: z.array(z.string()).optional().default(['All Posts']),
     image: z.string().optional().nullable(),
     image_alt: z.string().optional().nullable(),
+    image_focus: z.enum(['top', 'center', 'bottom']).optional().nullable(),
     draft: z.boolean().optional().default(false),
   }),
 });

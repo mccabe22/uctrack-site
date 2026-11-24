@@ -47,7 +47,7 @@ export async function homeNewsHtml(count = 4) {
   const posts = await getPosts();
   return posts.slice(0, count).map((p) => {
     const img = p.image?.card
-      ? `<img${p.image.card.w ? ` width="${p.image.card.w}" height="${p.image.card.h}"` : ''} src="${esc(p.image.card.src)}" class="attachment-uc-card size-uc-card wp-post-image" alt="${esc(p.image.alt)}" decoding="async" loading="lazy" />`
+      ? `<img${p.image.card.w ? ` width="${p.image.card.w}" height="${p.image.card.h}"` : ''} src="${esc(p.image.card.src)}" class="attachment-uc-card size-uc-card wp-post-image"${p.image.focus && p.image.focus !== 'center' ? ` style="object-position:center ${p.image.focus === 'top' ? '20%' : '70%'}"` : ''} alt="${esc(p.image.alt)}" decoding="async" loading="lazy" />`
       : '<span>UC</span>';
     let excerpt = p.excerpt.replace(/<[^>]*>/g, '').replace(/&hellip;/g, '…').replace(/&#8217;/g, '’').replace(/&#8216;/g, '‘').replace(/&#8220;/g, '“').replace(/&#8221;/g, '”').replace(/&#8211;/g, '–').replace(/&#8212;/g, '—').replace(/&#038;|&amp;/g, '&').replace(/&nbsp;/g, ' ').trim();
     excerpt = excerpt.replace(/^.{0,100}(?:AM|PM)\s+/s, '');

@@ -37,6 +37,7 @@ export async function getPosts() {
         ? { ...old.image, alt: e.data.image_alt ?? old.image.alt, card: old.image.card || { src: old.image.src, w: old.image.w, h: old.image.h } }
         : { src: e.data.image, alt: e.data.image_alt || '', w: null, h: null, srcset: '', card: { src: e.data.image, w: null, h: null } };
     }
+    if (image) image.focus = e.data.image_focus || 'center';
     const classList = old?.classList || ['post', 'type-post', 'status-publish', 'format-standard', image ? 'has-post-thumbnail' : '', 'hentry', ...cats.map((c) => `category-${c.slug}`)].filter(Boolean).join(' ');
     return {
       entry: e, id: old?.id || 0, slug: e.id, title: esc(e.data.title),

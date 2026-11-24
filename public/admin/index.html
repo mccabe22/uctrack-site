@@ -74,6 +74,7 @@
               },
               { name: 'image', label: 'Main photo', widget: 'image', required: false, hint: 'Shown at the top of the story and on its news card.' },
               { name: 'image_alt', label: 'Photo description', widget: 'string', required: false, hint: 'A few words describing the photo, for screen readers.' },
+              { name: 'image_focus', label: 'Photo focus on news cards', widget: 'select', required: false, default: 'center', options: [{ label: 'Center', value: 'center' }, { label: 'Top (keep heads / signs)', value: 'top' }, { label: 'Bottom (team is low in the photo)', value: 'bottom' }], hint: 'Which part of the photo stays visible when a news card has to crop it.' },
               { name: 'draft', label: 'Save as draft (not on the site yet)', widget: 'boolean', default: false, required: false },
               { name: 'body', label: 'Story', widget: 'markdown' },
             ],
