@@ -1,0 +1,27 @@
+---
+title: "Girls Win 5th Straight County Title. Boys 2nd."
+date: 2019-05-17T07:36:48-04:00
+author: "Michael McCabe"
+categories:
+  - "All Posts"
+  - "Results"
+  - "Spring Track & Field"
+image: "/wp-content/uploads/2019/06/girls_track_2019_county_71.jpg"
+image_alt: ""
+---
+<header>
+<h2 class="article-headline">The UC girls roll to 5th straight title, boys place second at Union County Championships</h2>
+<div class="noprint story_email"> <time class="article-date">5/17/2019 8:39:00 AM</time></div>
+<p class="article-subheadline">The Vikings won a total of 10 events, eight by the girls</p>
+<p class="article-byline">By Jim Lambert</p>
+</header>
+<p>The Union Catholic girls solidified its status as the No. 1 team in the state when the Vikings rolled to its fifth straight title with one of the greatest performances in meet history, and the UC boys finished a very strong second at the Union County Track and Field Championships that concluded on Thursday at Hub Stine Field in Plainfield.</p>
+<p>The girls were so dominant that they actually scored more than enough points to win the team title on day one of the meet on Wednesday when they won five events and racked up 90 points. UC picked up three more victories and added 72 more points on day two to finish the meet with a staggering winning total of 162 points, the second most in meet history behind the 167 that UC scored  in 2016. Westfield was second with 75.</p>
+<p>There were several athletes that had sensational performances for the UC girls.</p>
+<p><dfn><a href="https://ucvikings.com/roster.aspx?rp_id=411" rel="smarttag" rev="411">Felicia Quainoo</a></dfn> and <dfn><a href="https://ucvikings.com/roster.aspx?rp_id=415" rel="smarttag" rev="415">Sydney Tucker</a></dfn> were both double winners, <dfn><a href="https://ucvikings.com/roster.aspx?rp_id=420" rel="smarttag" rev="420">Zamira Ysaac</a></dfn>, <dfn><a href="https://ucvikings.com/roster.aspx?rp_id=404" rel="smarttag" rev="404">Jerika Lufrano</a></dfn>, <dfn><a href="https://ucvikings.com/roster.aspx?rp_id=400" rel="smarttag" rev="400">Hope Handlin</a></dfn>, and <dfn><a href="https://ucvikings.com/roster.aspx?rp_id=467" rel="smarttag" rev="467">A&#8217;Liyah Thomas</a></dfn> picked up victories, and <dfn><a href="https://ucvikings.com/roster.aspx?rp_id=407" rel="smarttag" rev="407">Leena Morant</a></dfn> smashed a school record with one of the best performances in meet history.</p>
+<p>Quainoo, a junior, won the triple jump and the 100 hurdles (14.64), Tucker, a junior, captured the 100 (12.08) and 200 (24.65), both personal bests. Handlin cleared 11-0 to win the pole vault, Ysaac won the 400 hurdles in 1:03.46 and was fourth in the 100 hurdles, and Lufrano repeated as champion in the 1,600 in a school record 5:01.39. Thomas, a sophomore, had a great jumping triple. She soared 18-5 to win the long jump, cleared 5-2 to place third in the high jump, and went.36-10 1/2 to place second in the triple jump.</p>
+<p>Morant, who was third in the 400 on Wednesday in 56.66, ran the best race of her career in the 800 on Thursday when the junior blasted a school record 2:09.00 to finish second with the second fastest time in meet history. Morant&#8217;s time is also the second fastest in the state this season and No. 13 in the nation. Morant was second to Victoria Vanriele of Gov. Livingston, who ran a meet record 2:06.68, No. 1 in N.J. and No. 3 in the country.</p>
+<p>On the boys side, junior <dfn><a href="https://ucvikings.com/roster.aspx?rp_id=362" rel="smarttag" rev="362">Elijah Brown</a></dfn> won the 800 in 1:54.97 and was fourth in the 400 in 48.86, junior <dfn><a href="https://ucvikings.com/roster.aspx?rp_id=381" rel="smarttag" rev="381">Conor Reilly</a></dfn> won the vault title (14-6) and was sixth in the long jump, , and several other athletes had standout performances as UC placed second to Elizabeth, 104-61.</p>
+<p>In addition to Reilly and Brown, <dfn><a href="https://ucvikings.com/roster.aspx?rp_id=957" rel="smarttag" rev="957">Myles Plummer</a></dfn> placed second in the 1,600 in a school freshman record 4:21.06 as he was just edged for the victory by Jacob Pantoya of Summit, who won in 4:21.04. Plummer&#8217;s 4:21.04 is the second fastest time by a freshman in the state this season. Plummer has also run 1:56.79 in the 800 this season, the fastest by a freshman in the state this spring. He is within striking distance of the state freshman 800 record of 1:55.35 by Brandon Pierson of CBA in 2008.</p>
+<p><dfn><a href="https://ucvikings.com/roster.aspx?rp_id=365" rel="smarttag" rev="365">Uchenna Duru</a></dfn> placed fourth in the shot put with a 51-8 3/4 and was fourth in the discus (156-2). <dfn><a href="https://ucvikings.com/roster.aspx?rp_id=358" rel="smarttag" rev="358">Oluwafemi Asenuga</a></dfn> placed second in the long jump (22-2) and third in the high jump (6-0), <dfn><a href="https://ucvikings.com/roster.aspx?rp_id=369" rel="smarttag" rev="369">Justin Jimerson</a></dfn> was third in the javelin (157-1), and junior <dfn><a href="https://ucvikings.com/roster.aspx?rp_id=463" rel="smarttag" rev="463">Tyhir Jones</a></dfn>continued his breakout season by placing seventh in the 400 in 49.56 and third in the 200 in 22.26, both personal best times.</p>
+<p>UC will be back in action this Monday and Tuesday at the South Jersey, Non-Public A Championships at Donovan Catholic in Toms River. The girls are heavily favored to repeat and the boys will</p>

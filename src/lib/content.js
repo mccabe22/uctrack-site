@@ -1,6 +1,6 @@
 // Builds the final HTML for each saved page, filling in the Google-Sheets-driven blocks.
 import seasons from '../data/seasons.json';
-import posts from '../data/posts.json';
+import { getPosts } from './news.js';
 import { renderSeasonByTabs } from './seasons.js';
 import springSaved from '../data/spring-2026-saved.json';
 import { RECORD_BOOKS, renderRecordTab } from './records.js';
@@ -43,10 +43,11 @@ export function allRecordTabs() {
 }
 
 /** Home page "Latest News" cards (same markup as the old theme). */
-export function homeNewsHtml(count = 4) {
+export async function homeNewsHtml(count = 4) {
+  const posts = await getPosts();
   return posts.slice(0, count).map((p) => {
     const img = p.image?.card
-      ? `<img width="${p.image.card.w}" height="${p.image.card.h}" src="${esc(p.image.card.src)}" class="attachment-uc-card size-uc-card wp-post-image" alt="${esc(p.image.alt)}" decoding="async" loading="lazy" />`
+      ? `<img${p.image.card.w ? ` width="${p.image.card.w}" height="${p.image.card.h}"` : ''} src="${esc(p.image.card.src)}" class="attachment-uc-card size-uc-card wp-post-image" alt="${esc(p.image.alt)}" decoding="async" loading="lazy" />`
       : '<span>UC</span>';
     let excerpt = p.excerpt.replace(/<[^>]*>/g, '').replace(/&hellip;/g, '…').replace(/&#8217;/g, '’').replace(/&#8216;/g, '‘').replace(/&#8220;/g, '“').replace(/&#8221;/g, '”').replace(/&#8211;/g, '–').replace(/&#8212;/g, '—').replace(/&#038;|&amp;/g, '&').replace(/&nbsp;/g, ' ').trim();
     excerpt = excerpt.replace(/^.{0,100}(?:AM|PM)\s+/s, '');
@@ -75,6 +76,6 @@ export async function renderPageHtml(page) {
     const first = Object.keys(RECORD_BOOKS[slug].tabs)[0];
     fill('records', await recordTabHtml(slug, first));
   }
-  if (html.includes('<!--LIVE:home-news-->')) fill('home-news', homeNewsHtml());
+  if (html.includes('<!--LIVE:home-news-->')) fill('home-news', await homeNewsHtml());
   return html;
 }

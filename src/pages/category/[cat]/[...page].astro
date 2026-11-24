@@ -1,12 +1,13 @@
 ---
 // News category archives, 12 stories per page, matching the old WordPress archive layout.
 import Base from '../../../layouts/Base.astro';
-import posts from '../../../data/posts.json';
-import categories from '../../../data/categories.json';
+import { getPosts } from '../../../lib/news.js';
 import { esc } from '../../../lib/util.js';
 
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const categories = [...new Map(posts.flatMap((p) => p.categories).map((c) => [c.slug, c])).values()];
   const out = [];
   for (const cat of categories) {
     const list = posts.filter((p) => p.categories.some((c) => c.slug === cat.slug));
@@ -31,7 +32,7 @@ shown.forEach((i, idx) => {
 if (n < total) nav += `<a class="next page-numbers" href="${href(n + 1)}">NEXT →</a>`;
 const card = (p) => {
   const img = p.image?.card
-    ? `<img width="${p.image.card.w}" height="${p.image.card.h}" src="${esc(p.image.card.src)}" class="attachment-uc-card size-uc-card wp-post-image" alt="${esc(p.image.alt)}" decoding="async" loading="lazy" />`
+    ? `<img${p.image.card.w ? ` width="${p.image.card.w}" height="${p.image.card.h}"` : ''} src="${esc(p.image.card.src)}" class="attachment-uc-card size-uc-card wp-post-image" alt="${esc(p.image.alt)}" decoding="async" loading="lazy" />`
     : '<span>UC</span>';
   const plain = p.title.replace(/<[^>]*>/g, '');
   return `<article class="news-card news-card--archive ${esc(p.classList)}"><a class="news-card__image" href="/${p.slug}/" aria-label="${esc(plain)}">${img}</a><div class="news-card__body"><div class="news-card__meta"><time>${esc(p.dateText)}</time><span>${esc(p.categories[0]?.name || '')}</span></div><h2><a href="/${p.slug}/">${p.title}</a></h2>${p.excerpt}<a class="text-link" href="/${p.slug}/">READ STORY →</a></div></article>`;

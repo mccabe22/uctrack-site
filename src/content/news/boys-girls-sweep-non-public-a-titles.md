@@ -1,0 +1,30 @@
+---
+title: "Boys & Girls Sweep Non Public “A” Titles"
+date: 2022-02-26T13:15:18-05:00
+author: "Michael McCabe"
+categories:
+  - "All Posts"
+  - "Results"
+  - "Winter Track & Field"
+image: "/wp-content/uploads/2022/03/2022IndoorStateChampionsBoysGirls.jpeg"
+image_alt: ""
+---
+<header>
+<h2 class="article-headline">UC&#8217;s boys and girls sweep titles at the State Non-Public A Track &amp; Field Championships</h2>
+<p><span style="text-decoration: underline;">By:</span> Jim Lambert</p>
+<p class="article-byline">Union Catholic extended one long streak and ended another when the Vikings pulled off a remarkable sweep of the team titles at Friday&#8217;s NJSIAA Non-Public A and B Championships on Friday at the Bennett Center in Toms River</p>
+</header>
+<p>The UC girls simply overpowered the competition, and reaffirmed their status as the top team in the state by scoring in all nine events and ringing up a meet-record 109 points to runaway with their seventh straight title. Kent Place was second with 40. UC broke the girls&#8217; overall meet record (all groups combined) for points scored of 105 that UC set in 2015</p>
+<p>The seven championships by the UC girls ties them with Bernards for the fourth most in state history for a girls program. Columbia and Winslow share the state record with 10 titles each, and Haddonfield has captured nine.</p>
+<p>On the boys side, Union Catholic won its first A Division title ever by snapping Christian Brothers Academy&#8217;s run of 10 straight titles with an 87-65 victory over runner-up CBA. UC won its previous two championships in the B Division in 2012 and &#8217;13.</p>
+<p>Let&#8217;s look at how the UC girls racked up their record 109 points.</p>
+<p>In the 800, junior <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1970" rel="smarttag" rev="1970">Kaleigh Gunsiorowski</a></dfn> (2:17.26), <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1345" rel="smarttag" rev="1345">Maameyaa Nyinah</a></dfn> (2:20.18), and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1333" rel="smarttag" rev="1333">Asydiah Pray-Brown</a></dfn> (2:22.63) swept the top three places for UC for 24 points.</p>
+<p><dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1331" rel="smarttag" rev="1331">Ajanae Thompson</a></dfn> led the 1-2-5 finish for UC in the hurdles with a winning time of 8.21 with teammate <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1995" rel="smarttag" rev="1995">Taylor Cox</a></dfn> second in 8.41, and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1328" rel="smarttag" rev="1328">Alexandra Bonn</a></dfn> fifth in 8.83. Thompson and Cox also scored big in the 55 dash as Thompson was second in 7.21 and Cox third in 7.39. UC also picked up a sixth in the dash from <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1999" rel="smarttag" rev="1999">Chai Lendor</a></dfn> (7.61).</p>
+<p>UC received a 3-4-6 in the 400 from Nyinah (59.85), Pray-Brown (1:00.82), and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1329" rel="smarttag" rev="1329">Aniyah Charles</a></dfn> (1:01.92), and the Vikings won the 4&#215;400 in 4:11.38.<br />
+In the field,,<dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1330" rel="smarttag" rev="1330">Jada Mia Puryear</a></dfn> was first for UC with a throw of 41-6.50, and teammate <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1975" rel="smarttag" rev="1975">Simone Motley</a></dfn> placed second with 33-9.25. UC received a 3-4 finish in the pole vault from <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1996" rel="smarttag" rev="1996">Seton Dill</a></dfn> (a PR of 8-0) and Carmela Lo Stuto (a PR of 7-0), and Bonn scored in the high jump when she cleared 4-8 to place sixth.</p>
+<p>For the UC boys, seniors <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1336" rel="smarttag" rev="1336">Nick Givan</a></dfn>, <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1951" rel="smarttag" rev="1951">Shane Brosnan</a></dfn>, and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1299" rel="smarttag" rev="1299">Myles Plummer</a></dfn> led the charge for the Vikings.</p>
+<p>Givan won the hurdles with a PR of 7.73, placed second in 400 in 50.02, fourth in the high jump (6-0), and he ran on the runner-up 4&#215;400.</p>
+<p>Brosnan won the 1,600 in 4:16.08, finished first in the 3,200 in 9:28.01, and placed third in the 800 in 1:58.29.</p>
+<p>Plummer placed second in the 800 in 1:56.67, third in the 1,600 in 4:17.39, and he ran on the relay.</p>
+<p>The Vikings also picked up huge points in the pole vault from <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1990" rel="smarttag" rev="1990">Aidan Reidy</a></dfn>, third with a PR of 10-6, and Matthew Schutz, fourth with a PR of 10-0.</p>
+<p>Also scoring for UC were <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1960" rel="smarttag" rev="1960">Al-Qamar Rojas</a></dfn> (fifth in the hurdles), <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1339" rel="smarttag" rev="1339">Noah Alston</a></dfn> (sixth in the hurdles), Caudell Cajuste (sixth in the 1,600), <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1952" rel="smarttag" rev="1952">Ryan Cichocki</a></dfn> (fifth in the 3,200 with a PR of 9:50.50), and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1991" rel="smarttag" rev="1991">Alex Saldana</a></dfn> (sixth in the 3,200 with a PR of 9:50.51.</p>

@@ -1,0 +1,34 @@
+---
+title: "UC Boys + Girls Sweep County Team Titles!"
+date: 2021-05-25T13:35:55-04:00
+author: "Michael McCabe"
+categories:
+  - "All Posts"
+  - "Awards"
+  - "Spring Track & Field"
+image: "/wp-content/uploads/2021/06/Screen-Shot-2021-06-02-at-1.38.20-PM.png"
+image_alt: ""
+---
+<header>
+<h2 class="article-headline">UC&#8217;s Track And Field Teams Sweep Titles At The Union County Championships</h2>
+<div class="noprint story_email"><time class="article-date">Written by: Jim Lambert</time></div>
+<p class="article-byline">One championship  was expected, while the other was a bit of a surprise when the Union Catholic track and field team swept the team titles at the Union County Track and Field Championships last Friday at historic Hub Stine Field in Plainfield.</p>
+</header>
+<p>It&#8217;s the first team sweep at the county meet for UC since 2015, and it just may have solidified the Vikings as the No. 1 combined boys and girls program in the state.</p>
+<p>The UC girls, the top-ranked team in N.J., simply overpowered the competition with the greatest balance of points on the track and in the field in meet history as the Vikings extended its streak to six titles in a row by outscoring runner-up Scotch Plains-Fanwood, 164-64.<br />
+<img loading="lazy" decoding="async" src="https://ucvikings.com/common/controls/image_handler.aspx?thumb_id=0&amp;image_path=/images/2021/5/24/IMG_8770.JPG" alt="UC girls track and field 2021 " width="2000" height="1500" /><br />
+How balanced was UC? How about 83 points in the field and 81 on the track! It doesn&#8217;t get much better or more dominate than that!</p>
+<p>In the field, junior <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1731" rel="smarttag" rev="1731">Jada Mia Puryear</a></dfn> had another huge meet in the circle, winning the discus with a NJ#1 127-8, and the shot put with a 39-2.25, senior <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1735" rel="smarttag" rev="1735">Autumn Barge</a></dfn> won the javelin with a PR of 102-4, sophomore <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1719" rel="smarttag" rev="1719">Alexandra Bonn</a></dfn> won the triple jump (36-10), and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1741" rel="smarttag" rev="1741">Daniela Peralta</a></dfn> cleared a huge PR and a school junior class record of 9-6 to win the pole vault.</p>
+<p>On the track for the UC girls, rising star <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1738" rel="smarttag" rev="1738">Kaleigh Gunsiorowski</a></dfn> was second in the 1,600 with a school sophomore class record 5:03.62, and she won the 800 in 2:16.52, and UC went 1-2-3 in the 100 hurdles with sophomore <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1733" rel="smarttag" rev="1733">Ajanae Thompson</a></dfn> winning in 1502. Senior <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1732" rel="smarttag" rev="1732">A&#8217;Liyah Thomas</a></dfn> second in 15.39, and senior <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1725" rel="smarttag" rev="1725">Avery Jordan</a></dfn> was third in 15.55.</p>
+<p>Thompson also placed fourth in the 100 dash and sixth in the 200, and Thomas also placed second in the high jump, and long jump. <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1730" rel="smarttag" rev="1730">Asydiah Pray-Brown</a></dfn>, a junior, added a third-place finish in 1:08.00.</p>
+<p>On the boys side, UC, second the last for years, finally dethroned Elizabeth in a great battle, 85-77. Elizabeth was seeking its fourth straight championship.</p>
+<p>The Vikings were led by sophomore <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1701" rel="smarttag" rev="1701">Nick Givan</a></dfn>, and the dynamic distance duo of <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1697" rel="smarttag" rev="1697">Shane Brosnan</a></dfn>, and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1709" rel="smarttag" rev="1709">Myles Plummer</a></dfn>.</p>
+<p>Givan competed with a heavy heart on Friday after learning that his grandfather passed away earlier in the day.</p>
+<p>But he found a way to push through the emotional anguish and stepped up big for UC by winning the 110-meter hurdles in 15.05 and splitting 49.5 on the runner-up 4&#215;400 relay. Givan also won the 400 hurdles in a NJ#7 54.96 and was fourth in the 400 on Thursday to account for 24 individual points, and helped the relay earn eight more points.</p>
+<p>&#8220;It was obviously a very tough day for me,&#8221; said Givan. &#8220;I dedicated this meet to my grandfather, and I made sure I gave it my all for him out there today..&#8221;</p>
+<p>Givan was one of several UC athletes who sparkled to lead the Vikings to the team title.</p>
+<p>Brosnan and Plummer, also juniors, combined for 38 individual points.</p>
+<p>Brosnan, who won the 1,600 in a NJ#, junior class school record and national qualifying time of  4:12.91 on Thursday, came back to take first in the 3,200 in 9:23.91, and Plummer, second to Brosnan in the 1,600 in 4:14.31, won the 800 in 1:53.83, and split 49.2 on the runner-up 4&#215;400.</p>
+<p>Also for UC, <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1700" rel="smarttag" rev="1700">Connor Cooper</a></dfn> came up with a pivotal third in the 200 and also captured fourth in the 100, and led off the 4&#215;400, Aidan Reidy was fifth in the pole vault with a one-foot PR of 9-0, <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1712" rel="smarttag" rev="1712">Al-Qamar Rojas</a></dfn> placed fifth in the 400 hurdles, and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1715" rel="smarttag" rev="1715">Jimmy Wischusen</a></dfn> earned a sixth in the 3,200 in 9:43.65, the second fastest time in the state this season by a freshman. Wischusen also ran 4:25.98 to place eighth in the 1600 on Thursday, which is the fastest time in the state for a freshman.</p>
+<p>&#8220;It was a total team effort,&#8221; said Givan. &#8220;We need everyone to step up for us to beat a great team like Elizabeth, and Shane, Myles, Connor, and everyone else came through for us.&#8221;<br />
+<img loading="lazy" decoding="async" src="https://ucvikings.com/common/controls/image_handler.aspx?thumb_id=0&amp;image_path=/images/2021/5/24/IMG_8778_71.JPG" alt="UC boys track and field 2021 " width="2000" height="1500" /></p>

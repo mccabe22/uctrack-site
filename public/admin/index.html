@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>UC Track Editor</title>
+  <link rel="icon" href="/wp-content/uploads/2026/07/cropped-ChatGPT-Image-Jul-24-2026-12_05_55-AM-32x32.png">
+</head>
+<body>
+  <!-- Editor for uctrack.com. Sign in with GitHub; every save publishes the site within about a minute. -->
+  <script>window.CMS_MANUAL_INIT = true;</script>
+  <script src="https://unpkg.com/@sveltia/cms@0.261.0/dist/sveltia-cms.js"></script>
+  <script>
+    CMS.init({
+      config: {
+        load_config_file: false,
+        backend: {
+          name: 'github',
+          repo: 'mccabe22/uctrack-site',
+          branch: 'main',
+          base_url: window.location.origin,
+          auth_endpoint: 'api/auth',
+          commit_messages: {
+            create: 'Add {{collection}} “{{slug}}”',
+            update: 'Update {{collection}} “{{slug}}”',
+            delete: 'Delete {{collection}} “{{slug}}”',
+            uploadMedia: 'Upload photo “{{path}}”',
+            deleteMedia: 'Delete photo “{{path}}”',
+          },
+        },
+        site_url: window.location.origin,
+        display_url: window.location.origin,
+        logo_url: '/wp-content/uploads/2026/07/cropped-ChatGPT-Image-Jul-24-2026-12_05_55-AM-192x192.png',
+        media_folder: 'public/wp-content/uploads/news',
+        public_folder: '/wp-content/uploads/news',
+        media_libraries: {
+          default: {
+            config: {
+              // Shrink big phone photos automatically so pages stay fast.
+              transformations: { raster_image: { format: 'webp', quality: 85, width: 2000, height: 2000 } },
+            },
+          },
+        },
+        collections: [
+          {
+            name: 'news',
+            label: 'News',
+            label_singular: 'Story',
+            description: 'News stories. New stories appear on the home page and in the News archive.',
+            folder: 'src/content/news',
+            extension: 'md',
+            format: 'frontmatter',
+            create: true,
+            delete: true,
+            slug: '{{slug}}',
+            summary: '{{title}} — {{date | date(\'MMM D, YYYY\')}}',
+            sortable_fields: { fields: ['date', 'title'], default: { field: 'date', direction: 'descending' } },
+            view_filters: [
+              { label: 'Cross Country', field: 'categories', pattern: 'Cross Country' },
+              { label: 'Winter Track & Field', field: 'categories', pattern: 'Winter Track & Field' },
+              { label: 'Spring Track & Field', field: 'categories', pattern: 'Spring Track & Field' },
+              { label: 'Drafts', field: 'draft', pattern: true },
+            ],
+            preview_path: '/{{slug}}/',
+            fields: [
+              { name: 'title', label: 'Headline', widget: 'string' },
+              { name: 'date', label: 'Date', widget: 'datetime', default: '{{now}}', time_format: 'h:mm A' },
+              { name: 'author', label: 'Posted by', widget: 'string', default: 'Michael McCabe' },
+              {
+                name: 'categories', label: 'Categories', widget: 'select', multiple: true, default: ['All Posts'],
+                options: ['All Posts', 'Cross Country', 'Winter Track & Field', 'Spring Track & Field', 'Results', 'Awards', 'Grammar School Meet'],
+                hint: 'Keep “All Posts” checked so the story shows in the main News list.',
+              },
+              { name: 'image', label: 'Main photo', widget: 'image', required: false, hint: 'Shown at the top of the story and on its news card.' },
+              { name: 'image_alt', label: 'Photo description', widget: 'string', required: false, hint: 'A few words describing the photo, for screen readers.' },
+              { name: 'draft', label: 'Save as draft (not on the site yet)', widget: 'boolean', default: false, required: false },
+              { name: 'body', label: 'Story', widget: 'markdown' },
+            ],
+          },
+        ],
+      },
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+---
+title: "UC sweeps Union County T&F Championships"
+date: 2025-05-11T14:20:06-04:00
+author: "Michael McCabe"
+categories:
+  - "All Posts"
+  - "Spring Track & Field"
+image: "/wp-content/uploads/2025/06/boyscounty25.webp"
+image_alt: ""
+---
+<header>
+<div class="noprint story_email">Written by: Jim Lambert</div>
+<p class="article-byline">Union Catholic extended its remarkable winning streaks with a dominating sweep of the team titles,when the Union County Championships concluded on Friday at historic Milt Campbell Track and Field Complex at Hub Stine Field in Plainfield.</p>
+</header>
+<p>In the girls competition, UC won eight of the nine running events, and finished first in three field events on the way to racking up an astounding  207.67 points to win their 10th straight title. Oak Knoll was second with 60 points.</p>
+<p>On the boys side, the Vikings picked up two wins from <a title="View athlete profile for Jalele Williams" href="https://nj.milesplit.com/athletes/15518870-jalele-williams">Jalele Williams</a> and victories from <a title="View athlete profile for Noah Cooper" href="https://nj.milesplit.com/athletes/11253106-noah-cooper">Noah Cooper </a>and <a title="View athlete profile for Keandre Kelly" href="https://nj.milesplit.com/athletes/13800524-keandre-kelly">Keandre Kelly</a> en route to their fifth straight championship, 108-82 over runner-up Westfield.</p>
+<p>UC broke 4 meets records during the 2 day competition.</p>
+<p>Williams, after dealing with cramps after the trials of the long jump on Friday, rolled out the cramps and then moved his approach up slightly and hit his takeoff perfect, soaring 23-6.75 on his second attempt in the finals. That broke the 43 year-old meet record of 23-6.25 was set in 1982 by Marv Peterson of Elizabeth. Williams also broke the UC school record of 23-4 that was set in 2016 by Perry Christie.</p>
+<p>&#8220;Yeah, I was surprised because I thought maybe I fouled on the takeoff and I almost fell backward when I landed,&#8221; said Williams, whose previous PR was 23-0. &#8220;To break a record like this means so much to me. I have been working very hard with my coach, so it&#8217;s nice to see it all pay off like this. Now I&#8217;m hoping I can get 24 feet by the end of the season.&#8221;</p>
+<p>The long jump record by Williams was the only boys meet record broken.  The other three records were all broken on the girls side by Union Catholi&#8217;s  <a title="View athlete profile for Taylor Cox" href="https://nj.milesplit.com/athletes/11253110-taylor-cox">Taylor Cox </a>and <a title="View athlete profile for Paige Sheppard" href="https://nj.milesplit.com/athletes/9290971-paige-sheppard">Paige Sheppard </a>, who each took down their own records, and<a title="View athlete profile for Kiara Fleming" href="https://nj.milesplit.com/athletes/12534966-kiara-fleming"> Kiara Fleming </a>also got into the record-breaking party for the Vikings.</p>
+<p>Fleming, a junior who won the 400 hurdles at the county meet in 2023, soared 39-8.50 in the triple jump to break the meet record of 39-8 set in 2010 by Kelly Burke of Cranford.</p>
+<p>The University of Georgia-bound Cox ripped an 11.65 to win her third straight title in the 100-meter dash as she shaved .01 off the record of 11.66 that she ran a year ago,</p>
+<p>Sheppard, a sophomore, sliced more than four seconds off her meet record when she dropped a 2:18.1 final 800 and a 63.9 last 400 to stop the clock at 4:48.02.</p>
+<p>Two of the biggest storylines of the meet came in the 800&#8217;s.</p>
+<p>In the girls 2-lapper, sophomore <a title="View athlete profile for Sophia Thompson" href="https://nj.milesplit.com/athletes/13800535-sophia-thompson">Sophia Thompson</a> of Union Catholic knocked off Nike Indoor National Champ <a title="View athlete profile for Reagan Moore" href="https://nj.milesplit.com/athletes/13458778-reagan-moore">Reagan Moore </a>of Oak Knoll, 2:09.35 to 2:11.01.Thompson, who ran a PR, took it out in 62.5 to grab the lead and Moore couldn&#8217;t stay with her. Moore, a sophomore, won the 400 on Thursday and has won two Meet of Champions titles in the 800 (one indoors and one outdoors)</p>
+<p>The boys 800 also featured an upset when UC junior <a title="View athlete profile for Keandre Kelly" href="https://nj.milesplit.com/athletes/13800524-keandre-kelly">Keandre Kelly </a>blasted out to a quick lead with a very fast 24.5 first 200. Aft going through 400 in 52.7, Kelly held a 10-meter lead on Indoor Meet of Champs winner<a title="View athlete profile for Ryan Daly" href="https://nj.milesplit.com/athletes/11051794-ryan-daly"> Ryan Daly</a> of Westfield. Daly got on Kelly&#8217;s hip with 200 to go, but Kelly fought him off on the course and then found another gear with 100 to go to secure the win, 1:53.14 to 1:53.73.</p>
+<p><a title="View athlete profile for Morgan Holley" href="https://nj.milesplit.com/athletes/14043035-morgan-holley">Morgan Holley</a> of UC was the only girl who won won two individual titles in the meet. The sophomore finished first in the 100 hurdles in 14.97 and then soared 18-2.25 to win the long jump. She also tied for fourth in the high jump. UC senior <a title="View athlete profile for Taylor Aska" href="https://nj.milesplit.com/athletes/11003763-taylor-aska">Taylor Aska </a>also won two golds. She won the half-lapper for the second straight years in 24.14 and anchored the winning 4&#215;400 that ran 3:53.51.</p>
+<p>UC sophomore <a title="View athlete profile for Cayleigh Kaiser" href="https://nj.milesplit.com/athletes/13800529-cayleigh-kaiser">Cayleigh Kaiser</a> left no doubt about her dominance in the girls 3,200 as she completely ruled the race for second straight year, stopping the clock at 11:16.34.</p>
+<p>The two other victories for UC came from seniors <a title="View athlete profile for Noah Cooper" href="https://nj.milesplit.com/athletes/11253106-noah-cooper">Noah Cooper </a>and Emma Muir.</p>
+<p>Cooper regained his title in the triple jump by soaring 45-1.50. Cooper, who missed this meet with an injury last year, finished his amazing career in the horizontal jumps with seven county titles (4 outdoors and three indoors).</p>
+<p>Muir unloaded a PR of 120-1 to win the girls javelin.</p>

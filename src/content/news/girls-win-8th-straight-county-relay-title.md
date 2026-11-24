@@ -1,0 +1,29 @@
+---
+title: "Girls Win 8th Straight County Relay Title!"
+date: 2022-01-09T12:00:53-05:00
+author: "Michael McCabe"
+categories:
+  - "All Posts"
+  - "Results"
+  - "Winter Track & Field"
+image: "/wp-content/uploads/2022/01/2022CountyRelay.jpg"
+image_alt: ""
+---
+<header>
+<h2 class="article-headline">UC girls win 8th straight title, boys place 2nd and smash record at Union County Relays</h2>
+<div class="noprint story_email"><span style="text-decoration: underline;">By:</span> Jim Lambert</div>
+</header>
+<p><a href="https://nj.milesplit.com/meets/453682-union-county-relay-championships-2022/results/783006/raw#.YdsO4b3MJPY">RESULTS</a></p>
+<p>The Union Catholic girls extended their incredible streak to eight titles in a row, and the boys placed second and smashed a record at Saturday&#8217;s Union County Relays at the Jersey City Armory.</p>
+<p>UC&#8217;s girls left no doubt about its superiority by winning five of the eight events, and running a NJ No. 1 time in the shuttle hurdles on the way to a dominating 74-46 victory over runner-up Rahway.</p>
+<p>Union Catholic won the distance medley relay (12:48.39), the shuttle hurdles in a NJ#1 34.09, the 4&#215;800 in 10:18.92, the sprint medley in a NJ#2 4:21.03, and the shot put.</p>
+<p>Junior Kaleigh Gunsiorowski ran on two winning relays for UC, and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1330" rel="smarttag" rev="1330">Jada Mia Puryear</a></dfn>, the state&#8217;s No. 1 ranked shot putter, had the top throw of the meet (38-7 1/2) to lead UC to victory in the shot.</p>
+<p>Gunsiorowski split 2:26 as the anchor on the sprint medley relay, and led off the DMR with a 3:48.3 carry. Also for the Vikings, junior <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1345" rel="smarttag" rev="1345">Maameyaa Nyinah</a></dfn> ran 60.4 on the SMR, and split 26.9 on the runner-up 4&#215;200, <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1333" rel="smarttag" rev="1333">Asydiah Pray-Brown</a></dfn> split 2:24.3 on the DMR, and 61.5 for the runner-up 4&#215;400 squad, senior <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1311" rel="smarttag" rev="1311">Jenna Keith</a></dfn> ran 2:26.8 in the 4&#215;800 and 62.5 in the 4&#215;400, and sophomore <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1577" rel="smarttag" rev="1577">Leilani Gibson</a></dfn> also ran on the 4&#215;400 and 4&#215;800 relays.<br />
+<iframe loading="lazy" title="UC girls win 8th straight title boys place 2nd and smash record at Union County Relays - Union Catholic High School Athletics" src="https://ucvikings.com/showcase/embed.aspx?title=UC%20girls%20win%208th%20straight%20title%2C%20boys%20place%202nd%20and%20smash%20record%20at%20Union%20County%20Relays%20-%20Union%20Catholic%20High%20School%20Athletics&amp;youtube=https%3A%2F%2Fwww.youtube.com%2Fembed%2FrAgiJSEghSw&amp;autoplay=false" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen" data-mce-fragment="1"></iframe><br />
+UC&#8217;s winning shuttle hurdle team consisted of Taylor Cox, <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1331" rel="smarttag" rev="1331">Ajanae Thompson</a></dfn>, McKenzie Johnson, and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1328" rel="smarttag" rev="1328">Alexandra Bonn</a></dfn>. Bonn was also a member of the runner-up high jump team.</p>
+<p>The Vikings also received strong performances  from <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1305" rel="smarttag" rev="1305">Abby Granrath</a></dfn> (DMR anchor), Chai Lendor (SMR), Leah Gould (SMR),  <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1329" rel="smarttag" rev="1329">Aniyah Charles</a></dfn> (4&#215;200/4&#215;400), Victoria Urbaez (4&#215;800), Seton Dill (4&#215;800), Erica Dines (400 leg in DMR), Emma Muir (high jump), Simone Motley (shot put), and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1565" rel="smarttag" rev="1565">Aria Hicks</a></dfn> (shot put).</p>
+<p>On the boys side, Union Catholic lost a hard-fought battle with Elizabeth, 68-64.</p>
+<p>There were several great performances by the UC boys, highlighted by a meet record 10:44.22 in the distance medley relay, the top time in the state this season and No. 2 in the nation. The former meet record in the DMR of 10:44.52 was set in 2011 by Union Catholic. The Vikings should be one of the best DMR teams in the nation this season.</p>
+<p>Harvard-bound Shane Brosnan, coming off an All-American XC season, made a sensational season debut by splitting 3:10.6 on the DMR, and he came back to split 1:57.6 as the anchor on the runner-up 4&#215;800. Sophomore Jimmy Wischusen anchored the DMR with a 4:29.6, and ran a 2:00.0 leg on the 4&#215;800, and senior Myles Plummer ran 1:57.9 on the runner-up SMR, and 51.6 on the runner-up 4&#215;400.</p>
+<p>Nick Givan was his usual splendid all-round self for UC. He led off the winning shuttle hurdles (32.31) with a 7.2, led off the runner-up 4&#215;200 with a 23.1, ran 51.7 on the runner-up 4&#215;400, and cleared a meet-best 5-10 to lead UC to victory in the high jump.</p>
+<p>Other key contributors for the Vikings included Caudell Cajuste, who ran the 800 leg in the DMR and was a member of the 4&#215;800, Marcus McCoy (400 on the DMR), Noah Cooper (8.4 in the shuttles/24.3 in 4&#215;200/54.5 in 4&#215;400), Al-Qamar Rojas (54.1 in the SMR/24.1 in 4&#215;200/8.3 in shuttles), Noah Alston (8.1 in shuttles/25.5 in SMR), Dylan Williams (55.6 in 4&#215;400/24.1 in 4&#215;200), Ryan Cichocki (4&#215;800), and Justice Hicks (high jump).</p>

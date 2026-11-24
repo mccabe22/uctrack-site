@@ -1,8 +1,9 @@
 // Sitemap of every page, news story and category archive.
-import posts from '../data/posts.json';
+import { getPosts } from '../lib/news.js';
 import categories from '../data/categories.json';
 import { pages } from '../lib/content.js';
-export function GET() {
+export async function GET() {
+  const posts = await getPosts();
   const site = 'https://www.uctrack.com';
   const urls = [
     ...pages.map((p) => site + p.path),

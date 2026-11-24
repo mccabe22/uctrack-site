@@ -1,0 +1,29 @@
+---
+title: "UC Boys & Girls Roll at Shore Coaches"
+date: 2022-10-02T08:35:47-04:00
+author: "Michael McCabe"
+categories:
+  - "All Posts"
+  - "Cross Country"
+  - "Results"
+image: "/wp-content/uploads/2022/10/shore2022.jpeg"
+image_alt: ""
+---
+<header>
+<p class="article-subheadline">Written by: Jim Lambert</p>
+</header>
+<p>Well over 100 teams, including most of the top squads and runners in the state, toed the starting line at Saturday&#8217;s Shore Coaches Invitational at blustery and rainy Holmdel Park, and Union Catholic&#8217;s boys and girls threw down the best performances of them all.</p>
+<p>The Vikings pulled off an amazing sweep by winning their respective races, and made a huge statement by also coming out on top in the team merge scoring, which combines all the teams that competed in the 13 varsity races (seven boys and six girls).</p>
+<p>That&#8217;s not all.</p>
+<p>Individually, juniors <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=2254" rel="smarttag" rev="2254">Jimmy Wischusen</a></dfn> and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=2226" rel="smarttag" rev="2226">Peyton Hollis</a></dfn> torched the historic 3.1-mile layout with the fastest times of the day.</p>
+<p>Wischusen won an epic, red-hot battle with senior Brian Boler of Delbarton in one of the greatest races in meet history. Wischusen dug down deep and mounted a big charge coming out of the woods and onto the final straightway to overtake Boler. Wischusen then held off a late surge by Boler before stopping the clock at 15:22! Boler, who made a bold move coming out of the bowl to take control of the race up front, was a step behind in 15:23, and Collin Boler, Brian&#8217;s twin, was third in 15:28.</p>
+<p>Just how fast was this race?</p>
+<p>It marked the first time in meet history that three runners went sub 15:30 in the same race, and all three runners are now in the top 20 all-time on Holmdel&#8217;s current historic layout, which has served as the state championship course since 1978. The time by Wischusen ties him for No. 11 in course history and equals the Union County record that his former teammate <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=1845" rel="smarttag" rev="1845">Shane Brosnan</a></dfn> ran last year when he finished third at the Meet of Champions.<br />
+Brian Boler is now No. 14 all-time at Holmdel, and Collin Boler&#8217;s time places him No.19 on the list.</p>
+<p>With Wischusen leading the way, the UC boys, ranked No. 3 in the state, jammed six runners into the top 10 in the E Division race and averaged 16:18 to runaway with a 24-91 victory over Delbarton. The Vikings also won the team merge, 98.5 to 228.5 over Westfield. Cherokee came out third in the merge with 231.5.</p>
+<p>Union Catholic, which fell to No. 1 CBA last week at the Bowdoin Classic, ran much better this week and received a big boost with transfers <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=2256" rel="smarttag" rev="2256">Alex Saldana</a></dfn> and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=2259" rel="smarttag" rev="2259">Sean Wilson</a></dfn> in the lineup for the first time.</p>
+<p>UC&#8217;s scorers after Wischusen were <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=2250" rel="smarttag" rev="2250">Ryan Cichocki</a></dfn>, 5th in 16:23, Saldana, sixth in 16:26, <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=2253" rel="smarttag" rev="2253">Evan Weber</a></dfn>, seventh in 16:33, and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=2248" rel="smarttag" rev="2248">Caudell Cajuste</a></dfn>, ninth in 16:45. Wilson was 10th in 16:45, and <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=2258" rel="smarttag" rev="2258">Michael Devine</a></dfn> finished 18th in 17:14.<br />
+<img loading="lazy" decoding="async" src="https://ucvikings.com/common/controls/image_handler.aspx?thumb_id=0&amp;image_path=/images/2022/10/2/uc_girls_22_shor_7yIla.jpg" alt="uc girls x " width="1280" height="960" /><br />
+On the girls side, Union Catholic, who moved up to No. 1 in the state rankings this past week, solidified its status as the top team in New Jersey by dropping another bomb as the Vikings went 1-2-3-6-11 and averaged 19:16 on the way to a 23-103 victory over Shore Regional in th E Division race. UC also blitzed the competition in the overall team merge, outscoring North Highlands, 92.5 to 299.</p>
+<p>UC has now swept the top three places in all three of its races this season. How incredible is that!</p>
+<p>UC&#8217;s potent frontal attack was led by Hollis, who continued her remarkable rookie season on the trails by winning in 18:33, a school record and tied for the fastest time of the day. Senior <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=2223" rel="smarttag" rev="2223">Kaleigh Gunsiorowski</a></dfn> was second in a big Holmdel PR of 18:46, and junior <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=2227" rel="smarttag" rev="2227">Courtney Kaiser</a></dfn>, in her first XC season, was third in 18:51. Freshmen <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=2232" rel="smarttag" rev="2232">Ella Solorzano</a></dfn> (19:56) an <dfn><a class="sidearm-roster-link-normalized" href="https://ucvikings.com/roster.aspx?rp_id=2231" rel="smarttag" rev="2231">Emmy O&#8217;Hearn</a></dfn> (20:18) were UC&#8217;s other scorers</p>
