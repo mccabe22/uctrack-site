@@ -375,6 +375,7 @@ function rcReviewSheet_(ss) {
   var sh = ss.getSheetByName(RC.reviewTab);
   var rule = SpreadsheetApp.newDataValidation().requireValueInList(['Pending', 'Approved', 'Rejected'], true).setAllowInvalid(false).build();
   sh.getRange(3, 1, Math.max(sh.getMaxRows() - 2, 1), 1).setDataValidation(rule);
+  sh.getRange(3, 14, Math.max(sh.getMaxRows() - 2, 1), 1).clearDataValidations();   // Processing column is free text
   return sh;
 }
 function rcLogSheet_(ss) {
@@ -480,7 +481,7 @@ function rcCheck() {
 function rcApply() {
   var ss = SpreadsheetApp.getActive(), review = ss.getSheetByName(RC.reviewTab);
   if (review.getLastRow() < 3) return 'Nothing to apply.';
-  var rows = review.getRange(3, 1, review.getLastRow() - 2, 16).getDisplayValues();
+  var rows = review.getRange(3, 1, review.getLastRow() - 2, 17).getDisplayValues();
   var done = 0, books = {};
   rows.forEach(function (r, i) {
     var status = rcTrim(r[0]), processed = rcTrim(r[13]);
@@ -504,7 +505,7 @@ function rcApplyOne_(ss, book, r) {
   var relayKey = rcRelayKey(r[3]);
   var entry = { gender: r[2], name: rcTrim(r[4]), relay: !!relayKey, event: relayKey || rcTrim(r[3]), markText: rcTrim(r[6]),
                 meet: rcTrim(r[7]), date: rcDate(r[8]) };
-  var src = ss.getSheetByName(r[12]); entry.loc = src ? rcTrim(src.getRange('A2').getDisplayValue()) : '';
+  var src = ss.getSheetByName(r[12]); entry.loc = rcTrim(r[16]) || (src ? rcTrim(src.getRange('A2').getDisplayValue()) : '');
   var field = !entry.relay && rcIsField(entry.event);
   entry.mark = rcMark(entry.markText, field);
   if (entry.mark == null) return 'Error: cannot read the mark "' + entry.markText + '"';
