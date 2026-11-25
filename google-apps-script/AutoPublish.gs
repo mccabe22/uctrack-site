@@ -24,6 +24,7 @@
 const SHEETS = {
   'Cross Country 2026 schedule + results': '1nwcdNnP79GTJ2oOyuho_3OtGSTL8IjFPLcByorqJgp4',
   'Winter 2026-27 schedule + results': '1rMiu8Lxe1p2f07VtMHoc0dxZPrnbRzsTOob1kCQaNbY',
+  'Spring 2027 schedule + results': '13pkOkK16goAU_pfKyi6gp-tc1REA2N44sitbYQUEVj4',
   'Cross Country records': '1mbIoosLcV2dlaS5n439sfQ0JEFtkyNn1L_MQWmXP_qA',
   'Winter boys records': '1bbsb1bb727pSgLEgBJdkB7SJkFnKUaba27gbljnUuNA',
   'Winter girls records': '1JAKX8cuBBCyh7QcQV0ZuoryYDyDQNVs79JkSQ_QLh5k',

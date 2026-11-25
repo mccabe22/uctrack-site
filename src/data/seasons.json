@@ -60,15 +60,15 @@
   },
   "spring": {
     "kind": "track",
-    "label": "2026",
-    "year": 2026,
-    "start": 2026,
-    "end": 2026,
-    "sheet": "19VQLiscRPSboZ2sEPL_1GreRHrtVcDgD9rZzG5Fao4U",
+    "label": "2027",
+    "year": 2027,
+    "start": 2027,
+    "end": 2027,
+    "sheet": "13pkOkK16goAU_pfKyi6gp-tc1REA2N44sitbYQUEVj4",
     "scheduleGid": 0,
     "scheduleCol": 0,
-    "current": false,
-    "useSaved": true
+    "current": true,
+    "useSaved": false
   },
   "archives": {
     "xc": {
@@ -83,6 +83,11 @@
       "2017": "11e7JoyALDO5fAaDv0qWg12Yi2-3ES695gsVbe3iXOhM"
     },
     "spring": {
+      "2026": [
+        "19VQLiscRPSboZ2sEPL_1GreRHrtVcDgD9rZzG5Fao4U",
+        0,
+        0
+      ],
       "2025": [
         "1fX-t_FrI997ZO8ZUxiB1K0uDIzGkLizCoEc71S--Rfk",
         0,
