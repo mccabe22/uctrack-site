@@ -18,4 +18,4 @@ categories:
 <p>&nbsp;</p>
 <p><span style="text-decoration: underline;">Excused from Class:</span> 1:50pm<br />
 <span style="text-decoration: underline;">Bus Leaves UC:</span> 2:10pm</p>
-<p><a href="http://cache.milesplit.com/user_files/230613/168173/pre-nationals_2016_time_schedule,_acceptances_etc.pdf" target="_blank" rel="nofollow">Meet Schedule</a> <em>(With Times)</em></p>
+<p><a href="https://cache.milesplit.com/user_files/230613/168173/pre-nationals_2016_time_schedule,_acceptances_etc.pdf" target="_blank" rel="nofollow">Meet Schedule</a> <em>(With Times)</em></p>

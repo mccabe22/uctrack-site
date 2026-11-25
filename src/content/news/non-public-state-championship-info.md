@@ -31,7 +31,7 @@ categories:
 <p><strong>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</strong></p>
 <p><span style="text-decoration: underline;">Meet at UC:</span> 12:30pm<br />
 <span style="text-decoration: underline;">Meet Begins:</span> 3:00pm</p>
-<p><img loading="lazy" decoding="async" class="" src="http://cache.milesplit.com/user_files/369316/161182/2016_group_track_schedule.png" alt="" width="558" height="613" /><br />
+<p><img loading="lazy" decoding="async" class="" src="https://cache.milesplit.com/user_files/369316/161182/2016_group_track_schedule.png" alt="" width="558" height="613" /><br />
 <strong>Field Events</strong><br />
 Reminder: First Events close 20 minutes prior to the listed Start Time for the Meet.<br />
 There will be two shot puts, two pole vaults and two high jumps available which means<br />

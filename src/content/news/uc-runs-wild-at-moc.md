@@ -25,6 +25,5 @@ categories:
 3rd Place &#8211; 100 Hurdles &#8211; Tia Livingston<br />
 4th Place &#8211; 4&#215;800 Relay &#8211; Asia Johnson, Amari Onque-Shabazz, Cassie Lamadieu, Chandi Piiru<br />
 7th Place &#8211; 800 Meters &#8211; Chandi Piiru</p>
-<p><img decoding="async" class=" alignleft" src="http://www.milesplit.com/static/photos/9380108/normal" alt="" /></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

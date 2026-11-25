@@ -13,4 +13,3 @@ categories:
 <p>-Girls Varsity Wins Varsity &#8220;C&#8221; Championship!<br />
 -Caitlin Glynn wins the Varsity &#8220;C&#8221; Race and breaks School Record, with a clocking of 19:35!  <a href="http://videos.milesplit.com/64524.mp4" target="_blank">Interview</a><br />
 -Justin Cadas breaks the the Freshman Class Record on this course!</p>
-<p><img loading="lazy" decoding="async" class="alignnone" src="http://nj.milesplit.com/photos/files/7259885/k" alt="" width="680" height="455" /></p>

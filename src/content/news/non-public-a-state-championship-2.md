@@ -15,7 +15,7 @@ categories:
 Notes</span><br />
 -Boys &amp; Girls Place 6th Overall<br />
 -Boys Break School Record Team Average 17:21.69</p>
-<p><img loading="lazy" decoding="async" alt=" DSCF1857" src="http://uctrack.smugmug.com/CrossCountry/2013-XC/State-Group-Meet-Holmdel/i-G8BtH3n/0/L/DSCF1857-L.jpg" width="288" height="216" /> <img loading="lazy" decoding="async" alt=" DSCF1877" src="http://uctrack.smugmug.com/CrossCountry/2013-XC/State-Group-Meet-Holmdel/i-w2RVNwC/0/L/DSCF1877-L.jpg" width="288" height="216" /></p>
+<p> </p>
 <p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</p>
 <p><span style="text-decoration: underline;">Meet at UC:</span> 9:15am</p>
 <p><span style="text-decoration: underline;">Race Schedule</span><br />

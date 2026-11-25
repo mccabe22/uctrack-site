@@ -26,7 +26,7 @@ Girls 400m Dash Finals<br />
 Boys 4x800m Relay Finals<br />
 Girls 4x800m Relay Finals</p>
 <p><strong>Field Events (7 events 3:30PM Start)</strong><br />
-<strong><a href="http://cache.milesplit.com/user_files/369316/208445/sectional_2017_field_rotations.pdf" target="_blank" rel="nofollow noopener noreferrer">Sectional Field Rotations Document</a></strong><br />
+<strong><a href="https://cache.milesplit.com/user_files/369316/208445/sectional_2017_field_rotations.pdf" target="_blank" rel="nofollow noopener noreferrer">Sectional Field Rotations Document</a></strong><br />
 Girls Discus<br />
 Boys Shot Put<br />
 Boys Javelin<br />
@@ -51,7 +51,7 @@ Girls 3200m Run Large/NP Finals<br />
 Boys 4x400m Relay Finals<br />
 Girls 4x400m Relay Finals</p>
 <p><strong>Field Events (9 events starting at 10:00AM)</strong><br />
-<strong><a href="http://cache.milesplit.com/user_files/369316/208445/sectional_2017_field_rotations.pdf" target="_blank" rel="nofollow noopener noreferrer">Sectional Field Rotations Document</a></strong><br />
+<strong><a href="https://cache.milesplit.com/user_files/369316/208445/sectional_2017_field_rotations.pdf" target="_blank" rel="nofollow noopener noreferrer">Sectional Field Rotations Document</a></strong><br />
 Girls Shot Put<br />
 Boys Discus<br />
 Girls Javelin<br />

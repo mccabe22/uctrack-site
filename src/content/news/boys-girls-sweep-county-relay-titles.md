@@ -18,4 +18,3 @@ categories:
 <p>[vimeo]https://vimeo.com/84180812[/vimeo]</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<p><img loading="lazy" decoding="async" class="alignnone" alt="" src="http://uctrack.smugmug.com/Winter-Track-Field/1314-Winter-Track-Field/Union-County-Relays-1814/i-GkShnsC/0/L/DSCF2085-L.jpg" width="480" height="360" /></p>

@@ -15,17 +15,17 @@ categories:
 -Girls 4&#215;1600 Relay Places 3rd and gets the Freshman Class Record (Lufrano, McCabe, Granizo, Zeigler)<br />
 -Asia Johnson runs the fastest 1200m split in School History<br />
 -View results for all of the strong performances!!!</p>
-<p><img decoding="async" src="http://image.nj.com/home/njo-media/pgmain/img/hssn-mms/photo/2016/04/16/20152686-standard.jpg" /><br />
+<p><img decoding="async" src="https://image.nj.com/home/njo-media/pgmain/img/hssn-mms/photo/2016/04/16/20152686-standard.jpg" /><br />
 <em><strong>4&#215;100 Meter Champions</strong></em></p>
-<p><img decoding="async" src="http://image.nj.com/home/njo-media/pgmain/img/hssn-mms/photo/2016/04/16/20152647-standard.jpg" /><br />
+<p><img decoding="async" src="https://image.nj.com/home/njo-media/pgmain/img/hssn-mms/photo/2016/04/16/20152647-standard.jpg" /><br />
 <em><strong>Sprint Medley Relay Champions</strong></em></p>
-<p><img decoding="async" src="http://image.nj.com/home/njo-media/pgmain/img/hssn-mms/photo/2016/04/16/20152685-standard.jpg" /><br />
+<p><img decoding="async" src="https://image.nj.com/home/njo-media/pgmain/img/hssn-mms/photo/2016/04/16/20152685-standard.jpg" /><br />
 <b><i>3&#215;400 Hurdle Relay Champions</i></b><br />
-<img decoding="async" src="http://image.nj.com/home/njo-media/pgmain/img/hssn-mms/photo/2016/04/16/20152631-standard.jpg" /><br />
+<img decoding="async" src="https://image.nj.com/home/njo-media/pgmain/img/hssn-mms/photo/2016/04/16/20152631-standard.jpg" /><br />
 <em><strong>4&#215;400 Meter Champions</strong></em><br />
-<img decoding="async" src="http://image.nj.com/home/njo-media/pgmain/img/hssn-mms/photo/2016/04/16/20152634-standard.jpg" /><br />
+<img decoding="async" src="https://image.nj.com/home/njo-media/pgmain/img/hssn-mms/photo/2016/04/16/20152634-standard.jpg" /><br />
 <em><strong>Distance Medley Relay Champions</strong></em><br />
-<img decoding="async" src="http://image.nj.com/home/njo-media/pgmain/img/hssn-mms/photo/2016/04/16/20152652-standard.jpg" /><br />
+<img decoding="async" src="https://image.nj.com/home/njo-media/pgmain/img/hssn-mms/photo/2016/04/16/20152652-standard.jpg" /><br />
 <em><strong>4&#215;200 Meter Champions</strong></em></p>
 <p>&nbsp;</p>
 <p><strong>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-</strong></p>

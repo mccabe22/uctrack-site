@@ -18,4 +18,3 @@ categories:
 -Pole Vault(Grieco), 55 Hurdles(McLaughlin), Triple Jump(Henry), 600m(Lamadieu), 300m(McLaughlin)<br />
 -Sydney McLaughlin breaks the State Record in the 300m Dash &#8211; 38.52<br />
 -Sean Brennan breaks Shot Put School Record</p>
-<p><img loading="lazy" decoding="async" class="" src="http://ny.milesplit.com/photos/files/8130510/k" alt="" width="659" height="440" /></p>
