@@ -530,11 +530,11 @@ function rcApplyOne_(ss, book, r) {
   var tb = book.top10[entry.event];
   if (!tb) return 'Error: no top-10 list for ' + entry.event;
   var p = rcPlace(tb.lists.School, entry, field, true);
-  if (p && p.qualifies) { rcWriteList_(book.sheets.top10, tb.lists.School, rcInsert(tb.lists.School, entry, field, true)); did.push('Top 10 #' + p.rank); }
+  if (p && p.qualifies) { rcAddToList_(book.sheets.top10, tb.lists.School, entry, field); did.push('Top 10 #' + p.rank + (p.tie ? ' (tie)' : '')); }
   var cls = rcClassFromText(r[5]);
   if (cls && book.classes[entry.event]) {
     var cl = book.classes[entry.event].lists[cls], cp = rcPlace(cl, entry, field, true);
-    if (cp && cp.qualifies) { rcWriteList_(book.sheets.classes, cl, rcInsert(cl, entry, field, true)); did.push(cls + ' #' + cp.rank); }
+    if (cp && cp.qualifies) { rcAddToList_(book.sheets.classes, cl, entry, field); did.push(cls + ' #' + cp.rank + (cp.tie ? ' (tie)' : '')); }
   }
   var sc = book.school.individual[entry.event];
   if (sc) ['School', cls].forEach(function (col) {
@@ -550,6 +550,19 @@ function rcApplyOne_(ss, book, r) {
 }
 
 /** Rewrite an individual list block (columns B-G) in place; col A labels stay. */
+/** Insert a mark into a list; if it ties the last spot on a full list, add a row so it is kept. */
+function rcAddToList_(sheet, list, entry, field) {
+  var rows = rcInsert(list, entry, field, true);
+  if (!rows.some(function (e) { return e.isNew; })) {
+    var last = list.first + list.size - 1;
+    sheet.insertRowAfter(last);
+    sheet.getRange(last, 1, 1, 7).copyTo(sheet.getRange(last + 1, 1, 1, 7), SpreadsheetApp.CopyPasteType.PASTE_FORMAT, false);
+    list = { first: list.first, size: list.size + 1, rows: list.rows };
+    rows = rcInsert(list, entry, field, true);
+  }
+  rcWriteList_(sheet, list, rows);
+}
+
 function rcWriteList_(sheet, list, rows) {
   var out = [];
   for (var k = 0; k < list.size; k++) {
