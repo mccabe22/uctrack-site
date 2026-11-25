@@ -59,5 +59,8 @@ const usesArchive = path.startsWith('/scheduleresults/') || /school-records\/$|c
 <Fragment set:html={chrome.footer} />
 {usesArchive && <script is:inline src={asset('/assets/static-archive.js')}></script>}
 {scripts.map((s) => s.src ? <script is:inline src={asset(s.src)}></script> : <script is:inline set:html={s.inline}></script>)}
+<!-- Vercel Web Analytics (no cookies): visitor counts in the Vercel dashboard -->
+<script is:inline>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script is:inline defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
