@@ -67,3 +67,17 @@ a:focus-visible,button:focus-visible{outline:3px solid #3d8cff;outline-offset:3p
 .uc-camp-soon strong{display:block;color:var(--navy,#031222);font-size:20px;line-height:1.2}
 .uc-camp-soon p{margin:4px 0 0!important;color:#5a4a1d!important;font-size:15px}
 @media(max-width:600px){.uc-camp-soon{flex-direction:column;align-items:flex-start;gap:10px;padding:18px}}
+
+/* Results tables: keep places and marks on one line; names and notes take the remaining width */
+.uc-xc-native-table th, .uc-xc-native-table td { vertical-align: middle; }
+.uc-xc-results-table th:nth-child(1), .uc-xc-results-table td:nth-child(1),
+.uc-xc-results-table th:nth-child(3), .uc-xc-results-table td:nth-child(3),
+.uc-spring-native-table th:nth-child(2), .uc-spring-native-table td:nth-child(2) {
+  white-space: nowrap; width: 1%;
+}
+.uc-xc-results-table th:nth-child(3), .uc-xc-results-table td:nth-child(3),
+.uc-spring-native-table th:nth-child(2), .uc-spring-native-table td:nth-child(2) { padding-right: 16px; }
+.uc-xc-results-table td:nth-child(2), .uc-spring-native-table td:nth-child(1) { overflow-wrap: normal; word-break: normal; }
+@media (min-width: 900px) {
+  .uc-xc-results-table th:nth-child(4), .uc-xc-results-table td:nth-child(4) { white-space: nowrap; }
+}
